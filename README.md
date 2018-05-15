@@ -34,6 +34,12 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 https://api.etherscan.io/api?module=stats&action=ethprice&apikey=W7RSF4KZ6D4AMAM6FY7B1J2AS82KFYYW6Z
 
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     alert( 'Hello, world!' );
+</script>
+<script>
+    var etherscanAPI = "https://api.etherscan.io/api?module=stats&action=ethprice&apikey=W7RSF4KZ6D4AMAM6FY7B1J2AS82KFYYW6Z";
+    $.getJSON( etherscanAPI ).done( function( data ) { alert ( 'Bien recu' ); );
 </script>
