@@ -1,8 +1,6 @@
-## Les donateurs donnent aux bénéficiaires certifiés
+## Les donateurs donnent aux bénéficiaires inscrits
 
-# En chiffres
-
- | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
+**En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
 --- | --- | --- | --- | ---
 ETH distribués | 0 | 0 | 0 | 0
 (soit en EUR) | 0 | 0 | 0 | 0
