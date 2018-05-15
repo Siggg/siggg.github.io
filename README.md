@@ -1,11 +1,9 @@
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
 --- | --- | --- | --- | ---
-ETH distribués | 0 | 0 | 0 | 0
-(soit en EUR) | 0 | 0 | 0 | 0
-Dons reçus | 0 | 0 | 0 | 0
-Inscriptions | 0 | 0 | 0 | 0
-Désinscriptions | 0 | 0 | 0 | 0
-
+Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0
+Dons reçus (nombre) | 0 | 0 | 0 | 0
+Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
+Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 # Dernières transactions du contrat
 
@@ -28,3 +26,6 @@ Désinscriptions | 0 | 0 | 0 | 0
 
 (transactions plus anciennes)
 
+## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
+
+### 0x000...
