@@ -30,6 +30,10 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 ### 0x000...
 
+## Accès au taux de change des Ethers
+
+https://api.etherscan.io/api?module=stats&action=ethprice&apikey=W7RSF4KZ6D4AMAM6FY7B1J2AS82KFYYW6Z
+
 <script>
     alert( 'Hello, world!' );
 </script>
