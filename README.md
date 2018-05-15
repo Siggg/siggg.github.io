@@ -29,3 +29,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 ## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
 
 ### 0x000...
+
+<script>
+    alert( 'Hello, world!' );
+</script>
