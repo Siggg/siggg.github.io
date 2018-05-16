@@ -60,7 +60,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 var event = item.input.substring(0,10);
                 switch(event) {
                     case '0x':
-                        var value = Number.parseFloat(item.value / Math.pow(10,18)).toPrecision(5);
+                        var value = Number.parseFloat(item.value / Math.pow(10,18)).toFixed(4);
                         event = "Réception d'un don de " + value + " ETH";
                         break;
                     case '0x6b9f96ea':
