@@ -32,18 +32,18 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-    var etherscanAPIKey = "MyApiKeyToken";
+    var etherscanAPIKeyToken = "MyApiKeyToken";
     var contractAddress = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
-    var contractBalanceAPI = "module=account&action=balance&address="
+    var balanceRequest = "module=account&action=balance&address="
         + contractAddress
         + "&tag=latest";
-    var contractTransactionsAPI = "module=account&action=txlist&address="
+    var transactionsRequest = "module=account&action=txlist&address="
         + contractAddress
         + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
     var etherscanAPI = "https://api.etherscan.io/api?"
-        + contractBalanceAPI
+        + transactionsRequest
         + "&apikey="
-        + etherscanAPIKey;
+        + etherscanAPIKeyToken;
     $.getJSON( etherscanAPI , function(data) { console.log( "success", data ); } )
         .done( function() { console.log( "done" ); } )
         .fail( function(error) { console.log( "fail", error ); } )
