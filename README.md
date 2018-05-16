@@ -38,52 +38,35 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
     var balance_request = "module=account&action=balance&address="
         + contract_address
         + "&tag=latest";
-    var relative_url_of_incoming_transactions_request = "module=account&action=txlist&address="
+    var relative_url_of_transactions_request = "module=account&action=txlist&address="
         + contract_address
         + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
-    var relative_url_of_outgoing_transactions_request = "module=account&action=txlistinternal&address="
-        + contract_address
-        + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
-    var absolute_url_of_incoming_transactions_request = "https://api.etherscan.io/api?"
-        + relative_url_of_incoming_transactions_request
+    var absolute_url_of_transactions_request = "https://api.etherscan.io/api?"
+        + relative_url_of_transactions_request
         + "&apikey="
         + etherscanAPIKeyToken;
-    var absolute_url_of_outgoing_transactions_request = "https://api.etherscan.io/api?"
-        + relative_url_of_outgoing_transactions_request
-        + "&apikey="
-        + etherscanAPIKeyToken;
-    var transactions = [];
-    $.getJSON( absolute_url_of_incoming_transactions_request )
+    $.getJSON( absolute_url_of_transactions_request )
         .done( function(data) {
             console.log( "done", data );
-            transactions = data.result;
             // we got incoming transactions, let's get outgoing transactions too
-            $.getJSON( absolute_url_of_outgoing_transactions_request )
-                .done( function(data) {
-                    console.log("done2", data);
-                    transactions = transactions.concat(data.result);
-                    // we got all transactions from and to the contract
-                    // sort them by timestamp
-                    transactions = transactions.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
-                    var html = '<ul>';
-                    transactions.forEach(function(item, index, array) {
-                        console.log(item, index);
-                        var newDate = new Date();
-                        newDate.setTime(item.timeStamp*1000);
-                        dateString = newDate.toISOString();
-                        html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                            dateString.substring(0,10) + ' ' +
-                            dateString.substring(11,19) + ' : transaction ' +
-                            item.hash.substring(0, 6) + '...</a></li>';
-                    });
-                    html += '</ul>';
-                    html += '<p><a href="https://etherscan.io/address/' + contract_address ;
-                    html += '">Audit technique du contrat et des transactions</a></p>';
-                    $('#transactions').html(html);
-                } )
-                .fail( function(error) { console.log("fail2", error); } )
-                .always( function() { console.log("always2"); } );
-            } )
+            // sort them by timestamp
+            var transactions = data.result.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
+            var html = '<ul>';
+            transactions.forEach(function(item, index, array) {
+                console.log(item, index);
+                var newDate = new Date();
+                newDate.setTime(item.timeStamp*1000);
+                dateString = newDate.toISOString();
+                html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
+                    dateString.substring(0,10) + ' ' +
+                    dateString.substring(11,19) + ' : transaction ' +
+                    item.hash.substring(0, 6) + '...</a></li>';
+                });
+                html += '</ul>';
+                html += '<p><a href="https://etherscan.io/address/' + contract_address ;
+                html += '">Audit technique du contrat et des transactions</a></p>';
+                $('#transactions').html(html);
+        } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
 </script>
