@@ -66,11 +66,11 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                         method = "Distribution des dons";
                         break;
                     case '0xcdd8b2b2':
-                        var beneficiary = item.input.substring(18,5);
+                        var beneficiary = item.input.substring(35,40);
                         method = "Inscription du bénéficiaire " + beneficiary;
                         break;
                     case '0x71d0028d':
-                        var beneficiary = item.input.substring(18,5);
+                        var beneficiary = item.input.substring(35,40);
                         method = "Désinscription du bénéficiaire " + beneficiary;
                         break;
                     case '0x60606040':
