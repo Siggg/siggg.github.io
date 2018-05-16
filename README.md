@@ -57,33 +57,34 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 var newDate = new Date();
                 newDate.setTime(item.timeStamp*1000);
                 var dateString = newDate.toISOString();
-                var method = item.input.substring(0,10);
-                switch(method) {
+                var event = item.input.substring(0,10);
+                switch(event) {
                     case '0x':
                         var value = Number.parseFloat(item.value / Math.pow(10,18)).toPrecision(5);
-                        method = "Réception d'un don de " + value + " ETH";
+                        event = "Réception d'un don de " + value + " ETH";
                         break;
                     case '0x6b9f96ea':
-                        method = "Distribution des dons";
+                        event = "Distribution des dons";
                         break;
                     case '0xcdd8b2b2':
                         var beneficiary = item.input.substring(34,38);
-                        method = "Inscription du bénéficiaire #" + beneficiary;
+                        event = "Inscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x71d0028d':
                         var beneficiary = item.input.substring(34,38);
-                        method = "Désinscription du bénéficiaire #" + beneficiary;
+                        event = "Désinscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x60606040':
-                        method = "Initialisation du contrat";
+                        event = "Initialisation du contrat";
                         break;
                     default:
-                        method = item.input;
+                        event = item.input;
                 };
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                    dateString.substring(0,10) + ' ' +
-                    dateString.substring(11,19) + ' : ' +
-                    method + '</a></li>';
+                    event +
+                    ', le ' + dateString.substring(0,10) +
+                    ' à ' + dateString.substring(11,19) +
+                    '</a></li>';
                 });
                 html += '</ul>';
                 html += '<p><a href="https://etherscan.io/address/' + contract_address ;
