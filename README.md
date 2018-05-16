@@ -1,3 +1,7 @@
+## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
+
+### 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
+
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
 --- | --- | --- | --- | ---
 Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0
@@ -10,9 +14,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 <div id="transactions" />
 [Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
-## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
 
-### 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
