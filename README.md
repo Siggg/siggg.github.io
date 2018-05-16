@@ -60,19 +60,21 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 var method = item.input.substring(0,10);
                 switch(method) {
                     case '0x':
-                        method = "Réception d'un don de " + item.value + " Wei";
+                        method = "Réception d'un don de " + (item.value / 10^18) + " ETH";
                         break;
                     case '0x6b9f96ea':
                         method = "Distribution des dons";
                         break;
                     case '0xcdd8b2b2':
-                        method = "Inscription d'un bénéficiaire";
+                        var beneficiary = item.input.substring(18,5);
+                        method = "Inscription du bénéficiaire " + beneficiary;
                         break;
                     case '0x71d0028d':
-                        method = "Désinscription d'un bénéficiaire";
+                        var beneficiary = item.input.substring(18,5);
+                        method = "Désinscription du bénéficiaire " + beneficiary;
                         break;
                     case '0x60606040':
-                        method = "Initiatlisation du contrat";
+                        method = "Initialisation du contrat";
                         break;
                     default:
                         method = item.input;
@@ -80,8 +82,8 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     dateString.substring(0,10) + ' ' +
                     dateString.substring(11,19) + ' : ' +
-                    method + ' ' +
-                    item.hash.substring(0, 6) + '...</a></li>';
+                    method + ' (' +
+                    item.hash.substring(0, 6) + '...)</a></li>';
                 });
                 html += '</ul>';
                 html += '<p><a href="https://etherscan.io/address/' + contract_address ;
