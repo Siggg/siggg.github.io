@@ -26,6 +26,8 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 (transactions plus anciennes)
 
+<div id="transactions" />
+
 ## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
 
 ### 0x000...
@@ -44,8 +46,19 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
         + transactionsRequest
         + "&apikey="
         + etherscanAPIKeyToken;
-    $.getJSON( etherscanAPI , function(data) { console.log( "success", data ); } )
-        .done( function(data) { console.log( "done", data ); } )
+    $.getJSON( etherscanAPI )
+        .done( function(data) {
+            console.log( "done", data );
+            var html = '<ul>';
+            data.result.forEach(function(item, index, array) {
+                console.log(item, index);
+                html += '<li>' +
+                    'transaction' +
+                    '</li>';
+            });
+            html += '</ul>';
+            $('#transactions').html(html);            
+        } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
 </script>
