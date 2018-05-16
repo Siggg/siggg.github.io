@@ -24,9 +24,11 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 - Don de 0.00 ETH par le donateur 0x000...
 - Don de 0.00 ETH par le donateur 0x000...
 
-(transactions plus anciennes)
-
 <div id="transactions" />
+
+<div id="contractLink">
+[Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
+</div>
 
 ## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
 
@@ -36,6 +38,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 <script>
     var etherscanAPIKeyToken = "MyApiKeyToken";
     var contractAddress = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
+    $('#contractLink').html('<p><a href="https://etherscan.io/address/' + contractAddress + '">Audit technique du contrat et des transactions</a></p>')
     var balanceRequest = "module=account&action=balance&address="
         + contractAddress
         + "&tag=latest";
@@ -50,10 +53,11 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
         .done( function(data) {
             console.log( "done", data );
             var html = '<ul>';
+            data.result.reverse();
             data.result.forEach(function(item, index, array) {
                 console.log(item, index);
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                    'transaction ' + item.hash +
+                    item.timeStamp + ' ' + item.hash +
                     '</a></li>';
             });
             html += '</ul>';
