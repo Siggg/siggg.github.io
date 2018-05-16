@@ -7,23 +7,6 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 # Dernières transactions du contrat
 
-- Don de 0.00 ETH par le donateur 0x000...
-- Don de 0.00 ETH par le donateur 0x000...
-- Distribution de 0.00 ETH à 0 bénéficiaires
-- Inscription du bénéficiaire 0x000...
-- Encaissement de 0.00 ETH
-- Inscription du bénéficiaire 0x000...
-- Inscription du bénéficiaire 0x000...
-- Désinscription du bénéficiaire 0x000...
-- Don de 0.00 ETH par le donateur 0x000...
-- Don de 0.00 ETH par le donateur 0x000...
-- Distribution de 0.00 ETH à 0 bénéficiaires
-- Don de 0.00 ETH par le donateur 0x000...
-- Don de 0.00 ETH par le donateur 0x000...
-- Inscription du bénéficiaire 0x000...
-- Don de 0.00 ETH par le donateur 0x000...
-- Don de 0.00 ETH par le donateur 0x000...
-
 <div id="transactions" />
 [Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
@@ -67,11 +50,11 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                         event = "Distribution des dons";
                         break;
                     case '0xcdd8b2b2':
-                        var beneficiary = item.input.substring(34,38);
+                        var beneficiary = item.input.substring(34,38) + '...';
                         event = "Inscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x71d0028d':
-                        var beneficiary = item.input.substring(34,38);
+                        var beneficiary = item.input.substring(34,38) + '...';
                         event = "Désinscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x60606040':
@@ -82,9 +65,9 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 };
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     event +
-                    ', le ' + dateString.substring(0,10) +
+                    ' (' + dateString.substring(0,10) +
                     ' à ' + dateString.substring(11,19) +
-                    '</a></li>';
+                    ')</a></li>';
                 });
                 html += '</ul>';
                 html += '<p><a href="https://etherscan.io/address/' + contract_address ;
