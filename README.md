@@ -57,10 +57,10 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 console.log(item, index);
                 var newDate = new Date();
                 newDate.setTime(item.timeStamp*1000);
-                dateString = newDate.toUTCString();
+                dateString = newDate.toISOString();
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                    dateString + ' ' + item.hash.substring(0, 6); +
-                    '</a></li>';
+                    dateString + ' : transaction ' + item.hash.substring(0, 6); +
+                    '...</a></li>';
             });
             html += '</ul>';
             $('#transactions').html(html);
