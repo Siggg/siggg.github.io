@@ -1,6 +1,4 @@
-## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
-
-### 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
+# Pour faire un don direct à des personnes bénéficiaires de l'allocation adulte handicapée, envoyez des Ethers à l'adresse suivante : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
 --- | --- | --- | --- | ---
