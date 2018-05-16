@@ -64,7 +64,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                     transactions = transactions.concat(data.result);
                     // we got all transactions from and to the contract
                     // sort them by timestamp
-                    transactions.sort( function(t1, t2) { return t1.timestamp - t2.timestamp; } );
+                    transactions.sort( function(t1, t2) { return t2.timestamp - t1.timestamp; } );
                     var html = '<ul>';
                     transactions.forEach(function(item, index, array) {
                         console.log(item, index);
