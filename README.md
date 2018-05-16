@@ -24,9 +24,8 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 - Don de 0.00 ETH par le donateur 0x000...
 - Don de 0.00 ETH par le donateur 0x000...
 
-<div id="transactions">
+<div id="transactions" />
 [Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
-</div>
 
 ## Pour donner aux bénéficiaires inscrits sur le contrat, envoyez vos ethers à l'adresse suivante
 
