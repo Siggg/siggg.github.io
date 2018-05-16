@@ -34,36 +34,53 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     var etherscanAPIKeyToken = "MyApiKeyToken";
-    var contractAddress = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
-    var balanceRequest = "module=account&action=balance&address="
-        + contractAddress
+    var contract_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
+    var balance_request = "module=account&action=balance&address="
+        + contract_address
         + "&tag=latest";
-    var transactionsRequest = "module=account&action=txlist&address="
-        + contractAddress
+    var relative_url_of_incoming_transactions_request = "module=account&action=txlist&address="
+        + contract_address
         + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
-    var etherscanAPI = "https://api.etherscan.io/api?"
-        + transactionsRequest
+    var relative_url_of_outgoing_transactions_request = "module=account&action=txlistinternal&address="
+        + contract_address
+        + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
+    var absolute_url_of_incoming_transactions_request = "https://api.etherscan.io/api?"
+        + relative_url_of_incoming_transactions_request
         + "&apikey="
         + etherscanAPIKeyToken;
-    $.getJSON( etherscanAPI )
+    var absolute_url_of_outgoing_transactions_request = "https://api.etherscan.io/api?"
+        + relative_url_of_outgoing_transactions_request
+        + "&apikey="
+        + etherscanAPIKeyToken;
+    var transactions = [];
+    $.getJSON( absolute_url_of_incoming_transactions_request )
         .done( function(data) {
             console.log( "done", data );
-            var html = '<ul>';
-            data.result.reverse();
-            data.result.forEach(function(item, index, array) {
-                console.log(item, index);
-                var newDate = new Date();
-                newDate.setTime(item.timeStamp*1000);
-                dateString = newDate.toISOString();
-                html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                    dateString.substring(0,10) + ' ' +
-                    dateString.substring(11,19) + ' : transaction ' +
-                    item.hash.substring(0, 6) + '...</a></li>';
-            });
-            html += '</ul>';
-            html += '<p><a href="https://etherscan.io/address/' + contractAddress ;
-            html += '">Audit technique du contrat et des transactions</a></p>';
-            $('#transactions').html(html);
+            transactions = data.result;
+            // we got incoming transactions, let's get outgoing transactions too
+            $.getJSON( absolute_url_of_outgoing_transactions_request )
+                .done( function(data) {
+                    console.log("done2", data);
+                    transactions = transactions.concat(data.result);
+                    var html = '<ul>';
+                    transactions.reverse();
+                    transactions.forEach(function(item, index, array) {
+                        console.log(item, index);
+                        var newDate = new Date();
+                        newDate.setTime(item.timeStamp*1000);
+                        dateString = newDate.toISOString();
+                        html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
+                            dateString.substring(0,10) + ' ' +
+                            dateString.substring(11,19) + ' : transaction ' +
+                            item.hash.substring(0, 6) + '...</a></li>';
+                    });
+                    html += '</ul>';
+                    html += '<p><a href="https://etherscan.io/address/' + contract_address ;
+                    html += '">Audit technique du contrat et des transactions</a></p>';
+                    $('#transactions').html(html);
+                } )
+                .fail( function(error) { console.log("fail2", error); } )
+                .always( function() { console.log("always2"); } );
             } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
