@@ -33,8 +33,10 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     var etherscanAPI = "https://api.etherscan.io/api?module=stats&action=ethprice&apikey=W7RSF4KZ6D4AMAM6FY7B1J2AS82KFYYW6Z";
-    $.getJSON( etherscanAPI, function(json) { console.log( "success" ); } )
-      .done( function() { console.log( "done" ); } )
-      .fail( function() { console.log( "fail" ); } )
-      .always( function() { console.log( "always" ); } )
+    console.log( "before" );
+    var jqxhr = $.getJSON( etherscanAPI, function(json) { console.log( "success" ); } )
+    jqxhr.done( function() { console.log( "done" ); } )
+         .fail( function() { console.log( "fail" ); } )
+         .always( function() { console.log( "always" ); } )
+    console.log( "after" );
 </script>
