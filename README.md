@@ -57,7 +57,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 dateString = newDate.toISOString();
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     dateString.substring(0,10) + ' ' +
-                    dateString.substring(12,19) + ' : transaction ' +
+                    dateString.substring(11,19) + ' : transaction ' +
                     item.hash.substring(0, 6) + '...</a></li>';
             });
             html += '</ul>';
