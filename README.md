@@ -60,7 +60,8 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 var method = item.input.substring(0,10);
                 switch(method) {
                     case '0x':
-                        method = "Réception d'un don de " + (item.value / Math.pow(10,18)) + " ETH";
+                        var value = Math.round(item.value / Math.pow(10,18), 5);
+                        method = "Réception d'un don de " + value + " ETH";
                         break;
                     case '0x6b9f96ea':
                         method = "Distribution des dons";
@@ -82,8 +83,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     dateString.substring(0,10) + ' ' +
                     dateString.substring(11,19) + ' : ' +
-                    method + ' (' +
-                    item.hash.substring(0, 6) + '...)</a></li>';
+                    method + '</a></li>';
                 });
                 html += '</ul>';
                 html += '<p><a href="https://etherscan.io/address/' + contract_address ;
