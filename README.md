@@ -60,7 +60,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 var method = item.input.substring(0,10);
                 switch(method) {
                     case '0x':
-                        var value = Math.round(item.value / Math.pow(10,18), 5);
+                        var value = Number.parseFloat(item.value / Math.pow(10,18)).toPrecision(5);
                         method = "Réception d'un don de " + value + " ETH";
                         break;
                     case '0x6b9f96ea':
@@ -68,11 +68,11 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                         break;
                     case '0xcdd8b2b2':
                         var beneficiary = item.input.substring(34,38);
-                        method = "Inscription du bénéficiaire " + beneficiary;
+                        method = "Inscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x71d0028d':
                         var beneficiary = item.input.substring(34,38);
-                        method = "Désinscription du bénéficiaire " + beneficiary;
+                        method = "Désinscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x60606040':
                         method = "Initialisation du contrat";
