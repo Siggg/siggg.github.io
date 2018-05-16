@@ -56,10 +56,18 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
                 console.log(item, index);
                 var newDate = new Date();
                 newDate.setTime(item.timeStamp*1000);
-                dateString = newDate.toISOString();
+                var dateString = newDate.toISOString();
+                var method = item.input.substring(0,10);
+                switch(method) {
+                    case '0x': method = "Réception d'un don de " + item.value + " Wei";
+                    case '0x6b9f96ea': method = "Distribution des dons";
+                    case '0xcdd8b2b2': method = "Inscription d'un bénéficiaire";
+                    case '0x71d0028d': method = "Désinscription d'un bénéficiaire";
+                };
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     dateString.substring(0,10) + ' ' +
-                    dateString.substring(11,19) + ' : transaction ' +
+                    dateString.substring(11,19) + ' : ' +
+                    method + ' ' +
                     item.hash.substring(0, 6) + '...</a></li>';
                 });
                 html += '</ul>';
