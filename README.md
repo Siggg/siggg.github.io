@@ -61,10 +61,10 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
             });
             html += '</ul>';
             $('#transactions').html(html);
-            $('#contractLink').html(
+/*            $('#contractLink').html(
                 '<p><a href="https://etherscan.io/address/' +
                 contractAddress +
-                '">Audit technique du contrat et des transactions</a></p>');
+                '">Audit technique du contrat et des transactions</a></p>'); */
             } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
