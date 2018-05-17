@@ -33,8 +33,6 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
 <a name="more"></a>
 # En savoir plus
 
-Troubles importants obligeant à des aménagements notables de la vie quotidienne et nécessitant des aides ou efforts particuliers pour l’insertion ou le maintien dans une vie sociale, scolaire ou professionnelle
-
 En France, l'[Allocation aux Adultes Handicapés](https://fr.wikipedia.org/wiki/Allocation_aux_adultes_handicap%C3%A9s) (AAH) est versée aux personnes adultes qui ne peuvent accomplir sans aide ou efforts exceptionnels au moins 50% des actions de la vie quotidienne (se déplacer, travailler, faire des études, voire manger, se laver, s'habiller...) et sont notamment en grande difficulté pour accéder à un emploi. Ce sont les Maisons Départementales des Personnes Handicapées (MDPH) qui identifient les personnes qui peuvent ou non bénéficier de l'AAH. Dans le contexte de cette expérimentation, un agent d'un conseil départemental inscrit (ou désinscrit) des bénéficiaires de l'AAH qui se portent volontaires pour participer à cette expérimentation et recevoir vos dons, après avoir vérifié leur qualité de bénéficiaire de l'AAH.
 
 Le montant de l'AAH permet de survivre dignement mais de manière frugale : par exemple 800 euros par mois pour se loger, manger et faire face aux dépenses du quotidien. Grâce à vos dons (de l'ordre de 15 euro par don), les bénéficiaires peuvent se permettre une petite dépense utile ou agréable : vêtement, cinéma, livre, cosmétique, ...
