@@ -20,7 +20,9 @@ Dons collectés (nombre) | 0 | 0 | 0 | 0 | 0
 Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 
-<div id="given">0</div>
+Somme collectée : <span id="collected">0</span>
+Frais de transaction : <span id="fees">0</span>
+Somme distribuée : <span id="given">0</span>
 
 # Dernières transactions
 
@@ -113,6 +115,9 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 });
                 html += '</ul>';
                 $('#transactions').html(html);
+                $('#collected').html(collected_amount.toFixed(4));
+                $('#fees').html(fees_amount.toPrecisions(3));
+                given_amount = collected_mount - fees_amount;
                 $('#given').html(given_amount.toFixed(4));
         } )
         .fail( function(error) { console.log( "fail", error ); } )
