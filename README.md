@@ -14,22 +14,26 @@ Vos dons en Ether sont distribués à des bénéficiaires [de l'Allocation Adult
 
 # Vérifiez les dons
 
- ## Les chiffres
+## Les chiffres
 
-* Dons distribués aux bénéficiaires (en ethers) : <span id="given_sum">?</span>
-* Frais de sécurisation à la charge des donateurs (en ethers) : <span id="collection_fees_sum">?</span>
-* Dons collectés, hors frais (en ethers) : <span id="collected_sum">?</span>
-* Dons collectés (nombre) : <span id="collected_count">?</span>
-* Frais de sécurisation à la charge des donateurs (en % des dons collectés) : <span id="collection_fees_percent">?</span>
-* Inscriptions de bénéficiaires (nombre) : <span id="registrations_count">?</span>
-* Désinscriptions de bénéficiaires (nombre) : <span id="unregistrations_count">?</span>
+* Dons distribués aux bénéficiaires (en ethers) : <span id="given_sum">(chargement en cours)</span>
+    * soit, en euros au cours moyen du jour : <span id="given_sum_eur">(chargement en cours)</span>
+* Frais de sécurisation à la charge des donateurs (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span>
+    * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span>
+* Dons collectés, hors frais (en ethers) : <span id="collected_sum">(chargement en cours)</span>
+    * soit, en euros au cours moyen du jour : <span id="collected_sum_eur">(chargement en cours)</span>
+* Dons collectés (nombre) : <span id="collected_count">(chargement en cours)</span>
+* Frais de sécurisation à la charge des donateurs (en % des dons collectés) : <span id="collection_fees_percent">(chargement en cours)</span>
+* Inscriptions de bénéficiaires (nombre) : <span id="registrations_count">(chargement en cours)</span>
+* Désinscriptions de bénéficiaires (nombre) : <span id="unregistrations_count">(chargement en cours)</span>
 
 ## Les dernières transactions
 
 <div id="transactions">
 
-Chargement des transactions en cours, veuillez patienter...
-En cas de dysfonctionnement, tentez de recharger la page ou contactez par email sig arobase akasig point org.
+(chargement en cours, veuillez patienter...)
+
+En cas de dysfonctionnement, tentez de recharger la page ou contactez par email **sig arobase akasig point org**.
 
 </div>
 
@@ -157,7 +161,23 @@ Les frais sont de nature diverse dans le cadre de ces dons. L'un des objectifs d
                 $('#collected_count').html(collected_count);
                 $('#registrations_count').html(registrations_count);
                 $('#unregistrations_count').html(unregistrations_count);
+                //
+                // let's convert ETH sums into EUR
+                //
+                var absolute_url_of_price_request = "https://min-api.cryptocompare.com/data/generateAvg?fsym=ETH&tsym=EUR&e=Kraken";
+                $.getJSON( absolute_url_of_price_request )
+                    .done( function(data) {
+                        var price = data.RAW.PRICE;
+                        var given_sum_eur = given_sum * price ;
+                        var collection_fees_sum_eur = collection_fees_sum * price ;
+                        var collected_sum_eur = collected_sum * price ;
+                        $('#given_sum_eur').html(given_sum_eur.toFixed(2));
+                        $('#collection_fees_sum_eur').html(collection_fees_sum_eur.toFixed(2));
+                        $('#collected_sum_eur').html(collected_sum_eur.toFixed(2));
+                    } )
+                    .fail( function(error) { console.log( "fail while trying to get ETH price", error ); } )
+                    .always( function() { console.log( "always log after trying to get ETH price" ); } );
         } )
-        .fail( function(error) { console.log( "fail", error ); } )
-        .always( function() { console.log( "always" ); } );
+        .fail( function(error) { console.log( "fail while trying to get contract transactions", error ); } )
+        .always( function() { console.log( "always after trying to get contract transactions" ); } );
 </script>
