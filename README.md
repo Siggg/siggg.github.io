@@ -20,7 +20,7 @@ Dons collectés (en ethers) | 0 | 0 | 0 | 0 | <span id="collected_sum">?</span>
 Dons collectés (nombre) | 0 | 0 | 0 | 0 | <span id="collected_count">?</span>
 Frais de sécurisation (en % des dons collectés) | 0 | 0 | 0 | 0 | <span id="fees_percent">?</span>
 Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registrations_count">?</span>
-Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registrations_count">?</span>
+Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="unregistrations_count">?</span>
 
 
 # Dernières transactions
@@ -125,7 +125,7 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 given_sum = collected_sum - fees_sum;
                 $('#given_sum').html(given_sum.toFixed(4));
                 $('#fees_sum').html(fees_sum.toPrecision(3));
-                fees_percent = fees_sum / collected_sum;
+                fees_percent = fees_sum / collected_sum * 100;
                 $('#fees_percent').html(fees_percent.toPrecision(2)+' %');
                 $('#collected_sum').html(collected_sum.toFixed(4));
                 $('#collected_count').html(collected_count);
