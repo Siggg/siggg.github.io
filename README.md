@@ -12,18 +12,19 @@ Adresse de collecte des dons : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 Vos dons en Ether sont distribués à des bénéficiaires [de l'Allocation Adulte aux Handicapés de manière publique, transparente, vérifiable et automatique.](#more)
 
- | **En chiffres**
---- | ---
-Dons distribués aux bénéficiaires (en ethers) | <span id="given_sum">?</span>
-Frais de sécurisation à la charge des donateurs (en ethers) | <span id="collection_fees_sum">?</span>
-Dons collectés, hors frais (en ethers) | <span id="collected_sum">?</span>
-Dons collectés (nombre) | <span id="collected_count">?</span>
-Frais de sécurisation à la charge des donateurs (en % des dons collectés) | <span id="collection_fees_percent">?</span>
-Inscriptions de bénéficiaires (nombre) | <span id="registrations_count">?</span>
-Désinscriptions de bénéficiaires (nombre) | <span id="unregistrations_count">?</span>
+# Vérifiez les dons
 
+ ## Les chiffres
 
-# Dernières transactions
+* Dons distribués aux bénéficiaires (en ethers) : <span id="given_sum">?</span>
+* Frais de sécurisation à la charge des donateurs (en ethers) : <span id="collection_fees_sum">?</span>
+* Dons collectés, hors frais (en ethers) : <span id="collected_sum">?</span>
+* Dons collectés (nombre) : <span id="collected_count">?</span>
+* Frais de sécurisation à la charge des donateurs (en % des dons collectés) : <span id="collection_fees_percent">?</span>
+* Inscriptions de bénéficiaires (nombre) : <span id="registrations_count">?</span>
+* Désinscriptions de bénéficiaires (nombre) : <span id="unregistrations_count">?</span>
+
+## Les dernières transactions
 
 <div id="transactions">
 
