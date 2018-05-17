@@ -95,7 +95,7 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 };
                 var gas_price = Number.parseFloat(item.gasPrice);
                 var gas_used = Number.parseFloat(item.gasUsed);
-                var transaction_fee = gas_price * gas_used;
+                var transaction_fee = gas_price * gas_used / Math.pow(10,18);
                 transaction_fee = transaction_fee.toPrecision(3);
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     event +
