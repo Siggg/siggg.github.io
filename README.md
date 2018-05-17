@@ -10,7 +10,7 @@ Pour faire un don direct à des personnes en situation de handicap lourd :
 
 Adresse de collecte des dons : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
-Vos dons en Ether sont distribués aux bénéficiaires [de l'Allocation Adulte aux Handicapés de manière publique, transparente, vérifiable et automatique.](#more)
+Vos dons en Ether sont distribués à des bénéficiaires [de l'Allocation Adulte aux Handicapés de manière publique, transparente, vérifiable et automatique.](#more)
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an | Total
 --- | --- | --- | --- | --- | ---
@@ -18,8 +18,9 @@ Dons distribués (en ethers) | 0 | 0 | 0 | 0 | <span id="given_sum">?</span>
 Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | <span id="fees_sum">?</span>
 Dons collectés (en ethers) | 0 | 0 | 0 | 0 | <span id="collected_sum">?</span>
 Dons collectés (nombre) | 0 | 0 | 0 | 0 | <span id="collected_count">?</span>
-Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registered_count">?</span>
-Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="unregistered_count">?</span>
+Frais de sécurisation (en % des dons collectés) | 0 | 0 | 0 | 0 | <span id="fees_percent">?</span>
+Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registrations_count">?</span>
+Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registrations_count">?</span>
 
 
 # Dernières transactions
@@ -68,12 +69,13 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
             // sort them by timestamp
             var transactions = data.result.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
             var html = '<ul>';
-            var collected_sum = 0; // cumulated donations received
-            var collected_count = 0; // number of donations received
+            var collected_sum = 0; // cumulated sum of donations collected
+            var collected_count = 0; // number of donations collected
             var fees_sum = 0; // cumulated transaction fees
             var given_sum = 0; // cumulated donations given
-            var registered_count = 0; // number of beneficiary registrations
-            var unregistered_count = 0; // number of beneficiary unregistrations
+            var fees_percent = 0; // percent of collected amount that goes into transaction fees
+            var registrations_count = 0; // number of beneficiary registrations
+            var unregistrations_count = 0; // number of beneficiary unregistrations
             transactions.forEach(function(item, index, array) {
                 console.log(item, index);
                 var newDate = new Date();
@@ -92,12 +94,12 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                         break;
                     case '0xcdd8b2b2':
                         var beneficiary = item.input.substring(34,38) + '...';
-                        registered_count += 1;
+                        registrations_count += 1;
                         event = "Inscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x71d0028d':
                         var beneficiary = item.input.substring(34,38) + '...';
-                        unregistered_count += 1;
+                        unregistrations_count += 1;
                         event = "Désinscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x60606040':
@@ -119,11 +121,16 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 });
                 html += '</ul>';
                 $('#transactions').html(html);
-                $('#collected_sum').html(collected_sum.toFixed(4));
-                $('#collected_count').html(received_count);
-                $('#fees_sum').html(fees_sum.toPrecision(3));
+                // Fill the dashboard with figures
                 given_sum = collected_sum - fees_sum;
                 $('#given_sum').html(given_sum.toFixed(4));
+                $('#fees_sum').html(fees_sum.toPrecision(3));
+                fees_percent = fees_sum / collected_sum;
+                $('#fees_percent').html(fees_percent.toPrecision(2)+' %');
+                $('#collected_sum').html(collected_sum.toFixed(4));
+                $('#collected_count').html(collected_count);
+                $('#registrations_count').html(registrations_count);
+                $('#unregistrations_count').html(unregistrations_count);
         } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
