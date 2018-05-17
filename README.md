@@ -56,17 +56,17 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
 Les frais sont de nature diverse dans le cadre de ces dons. L'un des objectifs de cette expérimentation est de mesurer et d'abaisser ces frais au maximum. Pour l'instant, les frais se décomposent ainsi :
 
 * Frais à la charge des donateurs < 12%
-  * frais de **change des euros en ethers** auprès d'une plateforme de change telle que Coinbase (perçus par la __plate-forme de change__) = moins de 4% ; certains plateformes de change proposent des frais de moins de 1% mais elles restent pour le moment plus compliquées à utiliser que Coinbase ;
-  * frais de **sécurisation de la collecte** des dons (perçus par les __mineurs__) : moins de 8% au cours de l'expérimentation (cf. tableau en haut de page)
+  * frais de **change des euros en ethers** auprès d'une plateforme de change telle que Coinbase (perçus __par la plate-forme de change__) = moins de 4% ; certains plateformes de change proposent des frais de moins de 1% mais elles restent pour le moment plus compliquées à utiliser que Coinbase ;
+  * frais de **sécurisation de la collecte** des dons (perçus __par les mineurs__) : moins de 8% au cours de l'expérimentation (cf. tableau en haut de page)
 * Frais à la charge du conseil départemental :
-  * frais de sécurisation des inscriptions et désinscription de bénéficiaires (perçus par les __mineurs__) ;
-  * frais de sécurisation de la distributions de dons (perçus par les __mineurs__) ;
+  * frais de **sécurisation des inscriptions et désinscription** de bénéficiaires (perçus __par les mineurs__) ;
+  * frais de **sécurisation de la distributions de dons** (perçus __par les mineurs__) ;
 * Frais à la charge des bénéficiaires :
-  * frais de sécurisation du paiement en ethers (perçus par les __mineurs__) ;
-  * frais de paiement en ether (perçus par les __commerçants ou des intermédiaires__) : 0 à 20%
+  * frais de **sécurisation du paiement** en ethers (perçus __par les mineurs__) ;
+  * frais de **traitement des paiements** en ethers (perçus __par les commerçants ou des intermédiaires__) : 0 à 20%
       * 0% si le bénéficiaire trouve un commerçant qui accepte d'être payé directement en ethers sans frais (ils sont rares pour le moment mais il en existe)
       * entre 2% et 3% si le bénéficiaire choisit un commerçant qui accepte d'être payé en ethers mais avec des frais raisonnables (par exemple, la société Spectrocoin vend en ether des bons d'achat Amazon avec moins de 3% de commission)
-      * environ 5% si le bénéficiaire choisit de convertir ses ethers en euros puis de les virer vers son compte bancaire
+      * environ 5% si le bénéficiaire choisit de convertir ses ethers en euros via une plateforme de change telle que Coinbase, puis de les virer vers son compte bancaire (virement SEPA)
       * jusqu'à 20% si le bénéficiaire choisit un commerçant ou un intermédiaire qui accepte les ethers mais pratique des frais de conversion exhorbitants (il en existe)
 
 
