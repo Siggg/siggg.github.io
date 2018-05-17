@@ -10,7 +10,7 @@ Pour faire un don direct à des personnes certifiées en tant que bénéficiaire
 
 Adresse de collecte des dons : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
-Vos dons en Ether sont distribués aux bénéficiaires [de manière publique, transparente, vérifiable et automatique.](#more)
+Vos dons en Ether sont distribués aux bénéficiaires [de l'Allocation Adulte aux Handicapés de manière publique, transparente, vérifiable et automatique.](#more)
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
 --- | --- | --- | --- | ---
@@ -33,7 +33,9 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
 <a name="more"></a>
 # En savoir plus
 
-En France, l'[Allocation aux Adultes Handicapés](https://fr.wikipedia.org/wiki/Allocation_aux_adultes_handicap%C3%A9s) est versée aux personnes qui ne peuvent accomplir seules 50% des gestes de la vie quotidienne (se déplacer, manger, s'habiller, se laver, ...) et sont particulièrement en difficulté pour obtenir un emploi. Le montant de cette allocation permet de survivre dignement mais de manière très frugale : par exemple 800 euros par mois pour se loger, manger et faire face à toutes les dépenses du quotidien. Grâce à vos dons (de l'ordre de 15 euro par don), les bénéficiaires peuvent se permettre une petite dépense utile ou agréable (vêtement, cinéma, livre, cosmétique, ...). Certains bénéficiaires ont des déficiences qui les empêchent de gérer seul leur argent (déficience intellectuelle par exemple). Ils peuvent dans ce cas avoir un tuteur qui gère leur argent à leur place.
+En France, l'[Allocation aux Adultes Handicapés](https://fr.wikipedia.org/wiki/Allocation_aux_adultes_handicap%C3%A9s) (AAH) est versée aux personnes qui ne peuvent accomplir seules 50% des gestes de la vie quotidienne (se déplacer, manger, s'habiller, se laver, ...) et sont particulièrement en difficulté pour obtenir un emploi. Ce sont les Conseils Départementaux qui identifient les personnes qui bénéficient ou non de l'AAH. Dans le contexte de cette expérimentation, un agent du Conseil Départemental des Hauts-de-Seine inscrit (ou désinscrit) des bénéficiaires de l'AAH qui se portent volontaires pour participer à cette expérimentation et recevoir vos dons.
+
+Le montant de l'AAH permet de survivre dignement mais de manière frugale : par exemple 800 euros par mois pour se loger, manger et faire face à toutes les dépenses du quotidien... Grâce à vos dons (de l'ordre de 15 euro par don), les bénéficiaires peuvent se permettre une petite dépense utile ou agréable (vêtement, cinéma, livre, cosmétique, ...).
 
 Vos dons ne sont pas collectés ni distribués par un intermédiaire central tel qu'une administration ou une association. Vos dons sont collectés par un logiciel autonome et de haute sécurité. La haute sécurité de ce logiciel est assurée par [plusieurs milliers d'internautes indépendants](https://www.ethernodes.org/network/1). Les ordinateurs des ces internautes vérifient que les dons sont collectés et distribués comme prévu par le logiciel. Ces vérifications sont réalisées en permanence et de manière indépendante et automatique. En échange, ces internautes sont rémunérés par des frais prélevés sur chaque collecte ou distribution de don.
 
