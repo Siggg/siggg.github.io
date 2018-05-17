@@ -14,15 +14,17 @@ Vos dons en Ether sont distribués aux bénéficiaires [de l'Allocation Adulte a
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an | Total
 --- | --- | --- | --- | --- | ---
-Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0 | 0
+Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0 | <span id="test">0</span>
 Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | 0
 Dons collectés (nombre) | 0 | 0 | 0 | 0 | 0
 Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 
-Somme collectée : <span id="collected">0</span>
-Frais de transaction : <span id="fees">0</span>
-Somme distribuée : <span id="given">0</span>
+Somme collectée : <span id="collected">? ETH</span>
+
+Frais de transaction : <span id="fees">? ETH</span>
+
+Somme distribuée : <span id="given">? ETH</span>
 
 # Dernières transactions
 
