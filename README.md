@@ -6,9 +6,7 @@ Pour faire un don direct à des personnes certifiées en tant que bénéficiaire
 2. achetez pour 10 euros d'Ether avec votre carte bleue
 3. envoyez de l'Ether à l'adresse ci-dessus
 
-Vos dons en Ether sont distribués aux bénéficiaires de manière publique, transparente, vérifiable et automatique.
-
-Ce n'est pas un intermédiaire central qui perçoit et distribue vos dons. C'est un logiciel autonome dont l'activité est sous le contrôle constant et automatique des ordinateurs de plusieurs milliers d'internautes (logiciel de type smart contract sur la blockchain Ethereum). Vous pouvez vous aussi auditer et vérifier la collecte et la distribution des dons grâce aux informations et aux liens ci-dessous.
+Vos dons en Ether sont distribués aux bénéficiaires [de manière publique, transparente, vérifiable et automatique.](#more)
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
 --- | --- | --- | --- | ---
@@ -19,9 +17,12 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 # Dernières transactions du contrat
 
-<div id="transactions" />
+<div id="transactions"></div
 [Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
+# <a name="more"></a>En savoir plus
+
+Vos dons ne sont pas collectés ni distribués par un intermédiaire central tel qu'une administration ou une association. Vos dons sont collectés par un logiciel ultra-sécurisé. Le logiciel est ultra-sécurisé car sous le contrôle constant et automatique des ordinateurs de [plusieurs milliers d'internautes](https://www.ethernodes.org/network/1). Chacun de ces ordinateurs vérifie en permanence que les dons sont collectés et distribués de manière conforme au contrat logiciel prévu. ([logiciel de type smart contract](https://fr.wikipedia.org/wiki/Contrat_intelligent) sur la blockchain [Ethereum](https://www.ethereum.org/)). Vous pouvez vous aussi auditer et vérifier la collecte et la distribution des dons grâce aux informations et aux liens ci-dessus.
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
