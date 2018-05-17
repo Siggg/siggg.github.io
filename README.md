@@ -17,14 +17,12 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 # Dernières transactions du contrat de don
 
-<div id="transactions">
-    
-* Chargement des transactions en cours...
-* Veuillez patienter...
-* En cas de dysfonctionnement, tentez de recharger la page...
-* Ou contactez par email sig <arobase> akasig <point> org.
-    
-</div>
+<div id="transactions"><ul>
+    <li> Chargement des transactions en cours...</li>
+    <li> Veuillez patienter...</li>
+    <li> En cas de dysfonctionnement, tentez de recharger la page...</li>
+    <li> Ou contactez par email sig <arobase> akasig <point> org.</li>
+</ul></div>
 [Audit technique du contrat de don et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
 # <a name="more"></a>En savoir plus
