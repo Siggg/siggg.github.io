@@ -7,6 +7,7 @@ Pour faire un don direct à des personnes certifiées en tant que bénéficiaire
 3. envoyez de l'Ether à l'adresse ci-dessous en scannant ce code :
 
 ![QR code du contrat de don](/contract_qr_code.png)
+
 Adresse de collecte des dons : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 Vos dons en Ether sont distribués aux bénéficiaires [de manière publique, transparente, vérifiable et automatique.](#more)
