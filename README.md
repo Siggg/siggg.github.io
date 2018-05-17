@@ -18,9 +18,9 @@ Dons distribués aux bénéficiaires (en ethers) | <span id="given_sum">?</span>
 Frais de sécurisation à la charge des donateurs (en ethers) | <span id="collection_fees_sum">?</span>
 Dons collectés, hors frais (en ethers) | <span id="collected_sum">?</span>
 Dons collectés (nombre) | <span id="collected_count">?</span>
-Frais de sécurisation à la charge des donateurs (en % des dons collectés) | 0 | 0 | 0 | 0 | <span id="collection_fees_percent">?</span>
-Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registrations_count">?</span>
-Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="unregistrations_count">?</span>
+Frais de sécurisation à la charge des donateurs (en % des dons collectés) | <span id="collection_fees_percent">?</span>
+Inscriptions de bénéficiaires (nombre) | <span id="registrations_count">?</span>
+Désinscriptions de bénéficiaires (nombre) | <span id="unregistrations_count">?</span>
 
 
 # Dernières transactions
@@ -37,13 +37,21 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
 <a name="more"></a>
 # En savoir plus
 
+## Les bénéficiaires
+
 En France, l'[Allocation aux Adultes Handicapés](https://fr.wikipedia.org/wiki/Allocation_aux_adultes_handicap%C3%A9s) (AAH) est versée aux personnes adultes qui ne peuvent accomplir sans aide ou efforts exceptionnels au moins 50% des actions de la vie quotidienne (se déplacer, travailler, faire des études, voire manger, se laver, s'habiller...) et sont notamment en grande difficulté pour accéder à un emploi. Ce sont les Maisons Départementales des Personnes Handicapées (MDPH) qui identifient les personnes qui peuvent ou non bénéficier de l'AAH. Dans le contexte de cette expérimentation, un agent d'un conseil départemental inscrit (ou désinscrit) des bénéficiaires de l'AAH qui se portent volontaires pour participer à cette expérimentation et recevoir vos dons, après avoir vérifié leur qualité de bénéficiaire de l'AAH.
 
 Le montant de l'AAH permet de survivre dignement mais de manière frugale : par exemple 800 euros par mois pour se loger, manger et faire face aux dépenses du quotidien. Grâce à vos dons (de l'ordre de 15 euro par don), les bénéficiaires peuvent se permettre une petite dépense utile ou agréable : vêtement, cinéma, livre, cosmétique, ...
 
+## Le fonctionnement technique
+
 Une fois les bénéficiaires inscrits, vos dons ne sont pas collectés ni distribués par un intermédiaire central tel qu'une administration ou une association. Vos dons sont collectés et directement distribués aux bénéficiaires par un logiciel autonome et de haute sécurité. La haute sécurité de ce logiciel est assurée par [plusieurs milliers d'internautes indépendants](https://www.ethernodes.org/network/1). Les ordinateurs de ces internautes vérifient que les dons sont collectés et distribués comme prévu par le logiciel. Ces vérifications sont réalisées en permanence et de manière indépendante et automatique. En échange, ces internautes sont rémunérés par des frais prélevés sur chaque collecte ou distribution de don.
 
 C'est le principe de fonctionnement des [logiciels de type **contrat intelligent**](https://fr.wikipedia.org/wiki/Contrat_intelligent). C'est la technologie de la **blockchain [Ethereum](https://www.ethereum.org/)** qui permet de les exécuter de manière sécurisée. Il existe des milliers de contrats intelligents, pour tout type d'usage. Ils ne sont pas utilisés que pour collecter ou distribuer des dons mais pour gérer toutes sortes de transactions financières ou d'échanges de données, entre particuliers, entreprises ou administrations. On appelle **mineurs** les personnes qui vérifient l'exécution des contrats intelligents en échange de **frais de transactions** également appelés **frais de sécurisation** dans le tableau en haut de page.
+
+Vous pouvez aussi auditer de manière manuelle la collecte et la distribution des dons grâce aux liens fournis ci-dessus pour chaque transaction.
+
+## Les frais
 
 Les frais sont de nature diverse dans le cadre de ces dons :
 
@@ -57,7 +65,7 @@ Les frais sont de nature diverse dans le cadre de ces dons :
   * environ 5% si le bénéficiaire choisit de convertir ses ethers en euros puis de les virer vers son compte bancaire
   * jusqu'à 20% si le bénéficiaire choisit un commerçant ou un intermédiaire qui accepte les ethers mais pratique des frais de conversion exhorbitants (il en existe)
 
-Vous pouvez aussi auditer de manière manuelle la collecte et la distribution des dons grâce aux liens fournis ci-dessus pour chaque transaction.
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
