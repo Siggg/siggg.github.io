@@ -14,7 +14,7 @@ Vos dons en Ether sont distribués aux bénéficiaires [de l'Allocation Adulte a
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an | Total
 --- | --- | --- | --- | --- | ---
-Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0 | 0
+Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0 | <div id="given">0</div>
 Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | 0
 Dons collectés (nombre) | 0 | 0 | 0 | 0 | 0
 Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
@@ -106,11 +106,12 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                     event +
                     ' (' + dateString.substring(0,10) +
                     ' à ' + dateString.substring(11,19) +
-                    '), frais de ' + transaction_fees.toPrecision(3) +
+                    '), frais de ' + transaction_fees.toPrecision(2) +
                     ' ETH</a></li>';
                 });
                 html += '</ul>';
                 $('#transactions').html(html);
+                $('#given').html(given_amount.toFixed(4));
         } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
