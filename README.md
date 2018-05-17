@@ -18,8 +18,8 @@ Dons distribués (en ethers) | 0 | 0 | 0 | 0 | <span id="given_sum">?</span>
 Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | <span id="fees_sum">?</span>
 Dons collectés (en ethers) | 0 | 0 | 0 | 0 | <span id="collected_sum">?</span>
 Dons collectés (nombre) | 0 | 0 | 0 | 0 | <span id="collected_count">?</span>
-Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
-Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
+Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="registered_count">?</span>
+Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | <span id="unregistered_count">?</span>
 
 
 # Dernières transactions
@@ -72,6 +72,8 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
             var collected_count = 0; // number of donations received
             var fees_sum = 0; // cumulated transaction fees
             var given_sum = 0; // cumulated donations given
+            var registered_count = 0; // number of beneficiary registrations
+            var unregistered_count = 0; // number of beneficiary unregistrations
             transactions.forEach(function(item, index, array) {
                 console.log(item, index);
                 var newDate = new Date();
@@ -90,10 +92,12 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                         break;
                     case '0xcdd8b2b2':
                         var beneficiary = item.input.substring(34,38) + '...';
+                        registered_count += 1;
                         event = "Inscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x71d0028d':
                         var beneficiary = item.input.substring(34,38) + '...';
+                        unregistered_count += 1;
                         event = "Désinscription du bénéficiaire #" + beneficiary;
                         break;
                     case '0x60606040':
