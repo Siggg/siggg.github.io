@@ -3,7 +3,7 @@
 Pour faire un don direct à des personnes certifiées en tant que bénéficiaires de l'Allocation Adulte Handicapé :
 
 1. installez [Coinbase](https://www.coinbase.com/mobile?locale=fr) sur votre smartphone (ou une app équivalente)
-2. achetez pour 10 euros d'Ether avec votre carte bleue
+2. achetez pour quelques euros d'Ether avec votre carte bleue (par exemple pour 15 euros)
 3. envoyez de l'Ether à l'adresse ci-dessus
 
 Vos dons en Ether sont distribués aux bénéficiaires [de manière publique, transparente, vérifiable et automatique.](#more)
@@ -17,7 +17,7 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 
 # Dernières transactions du contrat
 
-<div id="transactions"></div
+<div id="transactions"></div>
 [Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
 # <a name="more"></a>En savoir plus
