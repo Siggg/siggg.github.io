@@ -18,10 +18,12 @@ Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
 # Dernières transactions du contrat
 
 <div id="transactions">
+    
 * Chargement des transactions en cours...
 * Veuillez patienter...
 * En cas de dysfonctionnement, tentez de recharger la page...
 * Ou contactez par email sig <arobase> akasig <point> org.
+    
 </div>
 [Audit technique du contrat et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
