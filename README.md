@@ -12,12 +12,13 @@ Adresse de collecte des dons : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 Vos dons en Ether sont distribués aux bénéficiaires [de l'Allocation Adulte aux Handicapés de manière publique, transparente, vérifiable et automatique.](#more)
 
-**En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an
---- | --- | --- | --- | ---
-Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0
-Dons collectés (nombre) | 0 | 0 | 0 | 0
-Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
-Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0
+**En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an | Total
+--- | --- | --- | --- | --- | ---
+Somme donnée aux bénéficiaires (en ethers) | 0 | 0 | 0 | 0 | 0
+Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | 0
+Dons collectés (nombre) | 0 | 0 | 0 | 0 | 0
+Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
+Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 
 # Dernières transactions
 
@@ -39,7 +40,7 @@ Le montant de l'AAH permet de survivre dignement mais de manière frugale : par 
 
 Une fois les bénéficiaires inscrits, vos dons ne sont pas collectés ni distribués par un intermédiaire central tel qu'une administration ou une association. Vos dons sont collectés et directement distribués aux bénéficiaires par un logiciel autonome et de haute sécurité. La haute sécurité de ce logiciel est assurée par [plusieurs milliers d'internautes indépendants](https://www.ethernodes.org/network/1). Les ordinateurs de ces internautes vérifient que les dons sont collectés et distribués comme prévu par le logiciel. Ces vérifications sont réalisées en permanence et de manière indépendante et automatique. En échange, ces internautes sont rémunérés par des frais prélevés sur chaque collecte ou distribution de don.
 
-C'est le principe de fonctionnement des [logiciels de type **contrat intelligent**](https://fr.wikipedia.org/wiki/Contrat_intelligent). C'est la technologie de la **blockchain [Ethereum](https://www.ethereum.org/)** qui permet de les exécuter de manière sécurisée. Il existe des milliers de contrats intelligents, pour tout type d'usage. Ils ne sont pas utilisés que pour collecter ou distribuer des dons mais pour gérer toutes sortes de transactions financières ou d'échanges de données, entre particuliers, entreprises ou administrations. On appelle **mineurs** les personnes qui vérifient l'exécution des contrats intelligents en échange de **frais de transactions**.
+C'est le principe de fonctionnement des [logiciels de type **contrat intelligent**](https://fr.wikipedia.org/wiki/Contrat_intelligent). C'est la technologie de la **blockchain [Ethereum](https://www.ethereum.org/)** qui permet de les exécuter de manière sécurisée. Il existe des milliers de contrats intelligents, pour tout type d'usage. Ils ne sont pas utilisés que pour collecter ou distribuer des dons mais pour gérer toutes sortes de transactions financières ou d'échanges de données, entre particuliers, entreprises ou administrations. On appelle **mineurs** les personnes qui vérifient l'exécution des contrats intelligents en échange de **frais de transactions** également appelés **frais de sécurisation** dans le tableau en haut de page.
 
 Vous pouvez aussi auditer de manière manuelle la collecte et la distribution des dons grâce aux liens fournis ci-dessus pour chaque transaction.
 
@@ -65,6 +66,9 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
             // sort them by timestamp
             var transactions = data.result.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
             var html = '<ul>';
+            var collected_amount = 0;
+            var fees_amount = 0;
+            var given_amount = 0;
             transactions.forEach(function(item, index, array) {
                 console.log(item, index);
                 var newDate = new Date();
@@ -73,8 +77,9 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 var event = item.input.substring(0,10);
                 switch(event) {
                     case '0x':
-                        var value = Number.parseFloat(item.value / Math.pow(10,18)).toFixed(4);
-                        event = "Réception d'un don de " + value + " ETH";
+                        var value = Number.parseFloat(item.value / Math.pow(10,18));
+                        collected_amount += value;
+                        event = "Réception d'un don de " + value.toFixed(4) + " ETH";
                         break;
                     case '0x6b9f96ea':
                         event = "Distribution des dons";
@@ -95,13 +100,13 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 };
                 var gas_price = Number.parseFloat(item.gasPrice);
                 var gas_used = Number.parseFloat(item.gasUsed);
-                var transaction_fee = gas_price * gas_used / Math.pow(10,18);
-                transaction_fee = transaction_fee.toPrecision(3);
+                var transaction_fees = gas_price * gas_used / Math.pow(10,18);
+                fees_amount += transaction_fees;
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     event +
                     ' (' + dateString.substring(0,10) +
                     ' à ' + dateString.substring(11,19) +
-                    '), frais de ' + transaction_fee +
+                    '), frais de ' + transaction_fees.toPrecision(3) +
                     ' ETH</a></li>';
                 });
                 html += '</ul>';
