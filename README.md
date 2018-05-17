@@ -63,7 +63,7 @@ Les frais sont de nature diverse dans le cadre de ces dons. L'un des objectifs d
 * Frais à la charge des donateurs < 12% / don
   * frais de **change des euros en ethers** auprès d'une plateforme de change telle que Coinbase (perçus __par la plate-forme de change__) < 4% / don (certains plateformes de change proposent des frais de moins de 1% mais elles restent pour le moment plus compliquées à utiliser que Coinbase) ;
   * frais de **sécurisation de la collecte** des dons (perçus __par les mineurs__) < 8% / don (au cours de l'expérimentation, cf. tableau en haut de page)
-* Frais à la charge des bénéficiaires = environ 12% / achat
+* Frais à la charge des bénéficiaires = environ 10% / achat
   * frais de **sécurisation du paiement** en ethers (perçus __par les mineurs__) < 8% / achat
   * frais de **traitement des paiements** en ethers (perçus __par les commerçants ou des intermédiaires__) : 0 à 20% / achat
       * 0% / achat si le bénéficiaire trouve un commerçant qui accepte d'être payé directement en ethers sans frais (ils restent rares pour le moment [mais il en existe](https://www.coinpayments.net/store-directory-coin-ETH) )
