@@ -60,9 +60,9 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
 
 Les frais sont de nature diverse dans le cadre de ces dons. L'un des objectifs de cette expérimentation est de mesurer et d'abaisser ces frais au maximum. Pour l'instant, les frais se décomposent ainsi :
 
-* Frais à la charge des donateurs < 12%
+* Frais à la charge des donateurs < 12% / don
   * frais de **change des euros en ethers** auprès d'une plateforme de change telle que Coinbase (perçus __par la plate-forme de change__) < 4% / don (certains plateformes de change proposent des frais de moins de 1% mais elles restent pour le moment plus compliquées à utiliser que Coinbase) ;
-  * frais de **sécurisation de la collecte** des dons (perçus __par les mineurs__) < 8% / aond (au cours de l'expérimentation, cf. tableau en haut de page)
+  * frais de **sécurisation de la collecte** des dons (perçus __par les mineurs__) < 8% / don (au cours de l'expérimentation, cf. tableau en haut de page)
 * Frais à la charge des bénéficiaires :
   * frais de **sécurisation du paiement** en ethers (perçus __par les mineurs__) < 8% / achat
   * frais de **traitement des paiements** en ethers (perçus __par les commerçants ou des intermédiaires__) : 0 à 20% / achat
