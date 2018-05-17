@@ -93,11 +93,16 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                     default:
                         event = item.input;
                 };
+                var gas_price = Number.parseFloat(item.gasPrice);
+                var gas_used = Number.parseFloat(item.gasUsed);
+                var transaction_fee = gas_price * gas_used;
+                transaction_fee = transaction_fee.toPrecision(3);
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     event +
                     ' (' + dateString.substring(0,10) +
                     ' à ' + dateString.substring(11,19) +
-                    ')</a></li>';
+                    '), frais de ' + transaction_fee +
+                    ' ETH</a></li>';
                 });
                 html += '</ul>';
                 $('#transactions').html(html);
