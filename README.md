@@ -14,10 +14,10 @@ Vos dons en Ether sont distribués aux bénéficiaires [de l'Allocation Adulte a
 
 **En chiffres** | Depuis 24H | Depuis 7 jours | Depuis 1 mois | Depuis 1 an | Total
 --- | --- | --- | --- | --- | ---
-Somme collectée (en ethers) | 0 | 0 | 0 | 0 | <span id="collected">?</span>
-Somme distribuée (en ethers) | 0 | 0 | 0 | 0 | <span id="given">?</span>
-Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | <span id="fees">?</span>
-Dons collectés (nombre) | 0 | 0 | 0 | 0 | 0
+Dons distribués (en ethers) | 0 | 0 | 0 | 0 | <span id="given_sum">?</span>
+Frais de sécurisation (en ethers) | 0 | 0 | 0 | 0 | <span id="fees_sum">?</span>
+Dons collectés (en ethers) | 0 | 0 | 0 | 0 | <span id="collected_sum">?</span>
+Dons collectés (nombre) | 0 | 0 | 0 | 0 | <span id="collected_count">?</span>
 Inscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 Désinscriptions de bénéficiaires (nombre) | 0 | 0 | 0 | 0 | 0
 
@@ -68,9 +68,10 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
             // sort them by timestamp
             var transactions = data.result.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
             var html = '<ul>';
-            var collected_amount = 0;
-            var fees_amount = 0;
-            var given_amount = 0;
+            var collected_sum = 0; // cumulated donations received
+            var collected_count = 0; // number of donations received
+            var fees_sum = 0; // cumulated transaction fees
+            var given_sum = 0; // cumulated donations given
             transactions.forEach(function(item, index, array) {
                 console.log(item, index);
                 var newDate = new Date();
@@ -80,7 +81,8 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 switch(event) {
                     case '0x':
                         var value = Number.parseFloat(item.value / Math.pow(10,18));
-                        collected_amount += value;
+                        collected_sum += value;
+                        collected_count += 1;
                         event = "Réception d'un don de " + value.toFixed(4) + " ETH";
                         break;
                     case '0x6b9f96ea':
@@ -103,7 +105,7 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 var gas_price = Number.parseFloat(item.gasPrice);
                 var gas_used = Number.parseFloat(item.gasUsed);
                 var transaction_fees = gas_price * gas_used / Math.pow(10,18);
-                fees_amount += transaction_fees;
+                fees_sum += transaction_fees;
                 html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
                     event +
                     ' (' + dateString.substring(0,10) +
@@ -113,10 +115,11 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
                 });
                 html += '</ul>';
                 $('#transactions').html(html);
-                $('#collected').html(collected_amount.toFixed(4));
-                $('#fees').html(fees_amount.toPrecisions(3));
-                given_amount = collected_mount - fees_amount;
-                $('#given').html(given_amount.toFixed(4));
+                $('#collected_sum').html(collected_sum.toFixed(4));
+                $('#collected_count').html(received_count);
+                $('#fees_sum').html(fees_sum.toPrecision(3));
+                given_sum = collected_sum - fees_sum;
+                $('#given_sum').html(given_sum.toFixed(4));
         } )
         .fail( function(error) { console.log( "fail", error ); } )
         .always( function() { console.log( "always" ); } );
