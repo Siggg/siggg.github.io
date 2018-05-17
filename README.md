@@ -16,14 +16,14 @@ Vos dons en Ether sont distribués à des bénéficiaires [de l'Allocation Adult
 
 ## Les chiffres
 
-* Dons distribués aux bénéficiaires (en ethers) : <span id="given_sum">(chargement en cours)</span>
-    * soit, en euros au cours moyen du jour : <span id="given_sum_eur">(chargement en cours)</span>
-* Frais de sécurisation à la charge des donateurs (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span>
-    * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span>
-* Dons collectés, hors frais (en ethers) : <span id="collected_sum">(chargement en cours)</span>
-    * soit, en euros au cours moyen du jour : <span id="collected_sum_eur">(chargement en cours)</span>
+* Dons distribués aux bénéficiaires (en ethers) : <span id="given_sum">(chargement en cours)</span> ETH
+    * soit, en euros au cours moyen du jour : <span id="given_sum_eur">(chargement en cours)</span> EUR
+* Frais de sécurisation à la charge des donateurs (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span> ETH
+    * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
+* Dons collectés, hors frais (en ethers) : <span id="collected_sum">(chargement en cours)</span> ETH
+    * soit, en euros au cours moyen du jour : <span id="collected_sum_eur">(chargement en cours)</span> EUR
 * Dons collectés (nombre) : <span id="collected_count">(chargement en cours)</span>
-* Frais de sécurisation à la charge des donateurs (en % des dons collectés) : <span id="collection_fees_percent">(chargement en cours)</span>
+* Frais de sécurisation à la charge des donateurs (en % des dons collectés) : <span id="collection_fees_percent">(chargement en cours)</span> %
 * Inscriptions de bénéficiaires (nombre) : <span id="registrations_count">(chargement en cours)</span>
 * Désinscriptions de bénéficiaires (nombre) : <span id="unregistrations_count">(chargement en cours)</span>
 
@@ -61,21 +61,18 @@ Vous pouvez aussi auditer de manière manuelle la collecte et la distribution de
 Les frais sont de nature diverse dans le cadre de ces dons. L'un des objectifs de cette expérimentation est de mesurer et d'abaisser ces frais au maximum. Pour l'instant, les frais se décomposent ainsi :
 
 * Frais à la charge des donateurs < 12%
-  * frais de **change des euros en ethers** auprès d'une plateforme de change telle que Coinbase (perçus __par la plate-forme de change__) = moins de 4% ; certains plateformes de change proposent des frais de moins de 1% mais elles restent pour le moment plus compliquées à utiliser que Coinbase ;
-  * frais de **sécurisation de la collecte** des dons (perçus __par les mineurs__) : moins de 8% au cours de l'expérimentation (cf. tableau en haut de page)
-* Frais à la charge du conseil départemental :
-  * frais de **sécurisation des inscriptions et désinscription** de bénéficiaires (perçus __par les mineurs__) ;
-  * frais de **sécurisation de la distributions de dons** (perçus __par les mineurs__) ;
+  * frais de **change des euros en ethers** auprès d'une plateforme de change telle que Coinbase (perçus __par la plate-forme de change__) < 4% / don (certains plateformes de change proposent des frais de moins de 1% mais elles restent pour le moment plus compliquées à utiliser que Coinbase) ;
+  * frais de **sécurisation de la collecte** des dons (perçus __par les mineurs__) < 8% / aond (au cours de l'expérimentation, cf. tableau en haut de page)
 * Frais à la charge des bénéficiaires :
-  * frais de **sécurisation du paiement** en ethers (perçus __par les mineurs__) ;
-  * frais de **traitement des paiements** en ethers (perçus __par les commerçants ou des intermédiaires__) : 0 à 20%
-      * 0% si le bénéficiaire trouve un commerçant qui accepte d'être payé directement en ethers sans frais (ils sont rares pour le moment mais il en existe)
-      * entre 2% et 3% si le bénéficiaire choisit un commerçant qui accepte d'être payé en ethers mais avec des frais raisonnables (par exemple, la société Spectrocoin vend en ether des bons d'achat Amazon avec moins de 3% de commission)
-      * environ 5% si le bénéficiaire choisit de convertir ses ethers en euros via une plateforme de change telle que Coinbase, puis de les virer vers son compte bancaire (virement SEPA)
-      * jusqu'à 20% si le bénéficiaire choisit un commerçant ou un intermédiaire qui accepte les ethers mais pratique des frais de conversion exhorbitants (il en existe)
-
-
-
+  * frais de **sécurisation du paiement** en ethers (perçus __par les mineurs__) < 8% / achat
+  * frais de **traitement des paiements** en ethers (perçus __par les commerçants ou des intermédiaires__) : 0 à 20% / achat
+      * 0% / achat si le bénéficiaire trouve un commerçant qui accepte d'être payé directement en ethers sans frais (ils sont rares pour le moment mais il en existe)
+      * entre 2% et 3% / achat si le bénéficiaire choisit un commerçant qui accepte d'être payé en ethers mais avec des frais raisonnables (par exemple, la société Spectrocoin vend en ether des bons d'achat Amazon avec moins de 3% de commission)
+      * environ 5% / achat si le bénéficiaire choisit de convertir ses ethers en euros via une plateforme de change telle que Coinbase, puis de les virer vers son compte bancaire (virement SEPA)
+      * jusqu'à 20% / achat si le bénéficiaire choisit un commerçant ou un intermédiaire qui accepte les ethers mais pratique des frais de conversion exhorbitants (il en existe)
+* Frais à la charge du conseil départemental : < 1 € / transaction
+  * frais de **sécurisation des inscriptions et désinscription** de bénéficiaires (perçus __par les mineurs__)
+  * frais de **sécurisation de la distributions de dons** (perçus __par les mineurs__)
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -156,7 +153,7 @@ Les frais sont de nature diverse dans le cadre de ces dons. L'un des objectifs d
                 $('#given_sum').html(given_sum.toFixed(4));
                 $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
                 collection_fees_percent = collection_fees_sum / collected_sum * 100;
-                $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2)+' %');
+                $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
                 $('#collected_sum').html(collected_sum.toFixed(4));
                 $('#collected_count').html(collected_count);
                 $('#registrations_count').html(registrations_count);
