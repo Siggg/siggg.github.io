@@ -1,3 +1,3 @@
 Pages :
-* [donation.md](Solidarité directe face au handicap)
-* [hats.md](Mécénat collaboratif)
+* [Solidarité directe face au handicap](donation)
+* [Mécénat collaboratif](hackathon)
