@@ -1,3 +1,8 @@
+---
+title: Solidarité directe face au handicap
+description : Des donateurs versent des dons directs, sans intermédiaire, à des bénéficiaires en situation de handicap
+---
+
 # Faites un don
 
 Pour faire un don direct à des personnes en situation de handicap lourd :
