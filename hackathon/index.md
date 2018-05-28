@@ -6,7 +6,7 @@ bla bla
 
 <script src="js/ethereumjs-wallet-0.6.0.min.js"></script>
 <script>
-  var account = generate();
+  var account = ethereumjs.Wallet.generate();
   var private_key = account.getPrivateKeyString();
   var public_key = account.getPublicKeyString();
   var address = account.getAddressString();
