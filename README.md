@@ -1,3 +1,3 @@
 Pages :
 * [Solidarité directe face au handicap](donation)
-* [Mécénat collaboratif](hackathon)
+* [Mécénat collaboratif pour le hackathon Hauts-de-Seine 2018 "Innovation et autonomie"](hackathon)
