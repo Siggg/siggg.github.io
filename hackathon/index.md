@@ -29,7 +29,7 @@ description : projets du hackathon
 <script src="js/qrcode.min.js"></script>
 <script>
   var account = ethereumjs.Wallet.generate();
-  var private_key = account.getPrivateKeyString();
+  var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
   var public_address = account.getAddressString();
   var checksum_address = account.getChecksumAddressString();
@@ -48,8 +48,8 @@ description : projets du hackathon
 	  text: private_key,
 	  width: 256,
 	  height: 256,
-	  colorDark : "#000000",
-	  colorLight : "#ffffff",
+	  colorDark : "#00ffff",
+	  colorLight : "#ff0000",
 	  correctLevel : QRCode.CorrectLevel.H
   });
 </script>
