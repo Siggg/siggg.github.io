@@ -7,8 +7,9 @@ description : projets du hackathon
   <li>Compte n°1
     <ul>
       <li>Adresse publique : <span id="checksum_address1">En cours de calcul...</span></li>
-      <li>Clef privée : <span id="private_key1">En cours de calcul...</span></li>
       <li>QR Code : <span id="qr_code1">En cours de calcul...</span></li>
+      <li>Clef secrète : <span id="private_key1">En cours de calcul...</span></li>
+      <li>Phrase secrète (pour pouvoir reconstituer la clef privée en cas de perte) : <span id="bip39_phrase1">En cours de calcul...</span></li>
     </ul>
   </li>
 </ul>
