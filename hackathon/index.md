@@ -6,10 +6,19 @@ description : projets du hackathon
   <lh>Comptes</lh>
   <li>Compte n°1
     <ul>
-      <li>Adresse publique : <span id="checksum_address1">En cours de calcul...</span></li>
-      <li>QR Code : <span id="qr_code1">En cours de calcul...</span></li>
-      <li>Clef secrète : <span id="private_key1">En cours de calcul...</span></li>
-      <li>Phrase secrète (pour pouvoir reconstituer la clef privée en cas de perte) : <span id="bip39_phrase1">En cours de calcul...</span></li>
+      <li>Adresse publique :
+        <ul>
+          <li>sous forme textuelle : <span id="public_address_string_1">En cours de calcul...</span></li>
+          <li>sous forme graphique : <span id="public_address_qr_code_1"> </span></li>
+        </ul>
+      </li>
+      <li>Clef secrète :
+        <ul>
+          <li>sous forme textuelle : <span id="private_key_string_1">En cours de calcul...</span></li>
+          <li>sous forme graphique : <span id="private_key_qr_code_1"> </span></li>
+          <li>sous forme de 12 mots  (à conserver précieusement) : <span id="private_key_bip39_1">En cours de calcul...</span></li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -21,16 +30,24 @@ description : projets du hackathon
 <script>
   var account = ethereumjs.Wallet.generate();
   var private_key = account.getPrivateKeyString();
-  var public_key = account.getPublicKeyString();
-  var address = account.getAddressString();
+  // var public_key = account.getPublicKeyString();
+  var public_address = account.getAddressString();
   var checksum_address = account.getChecksumAddressString();
-  var json_wallet = account.toV3("secret");
-  $('#checksum_address1').html(checksum_address);
-  $('#private_key1').html(private_key);
-  var qrcode = new QRCode(document.getElementById("qr_code1"), {
+  // var json_wallet = account.toV3("secret");
+  $('#public_address_string_1').html(checksum_address);
+  $('#private_key_string_1').html(private_key);
+  var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_1"), {
 	  text: checksum_address,
-	  width: 128,
-	  height: 128,
+	  width: 256,
+	  height: 256,
+	  colorDark : "#000000",
+	  colorLight : "#ffffff",
+	  correctLevel : QRCode.CorrectLevel.H
+  });
+  var private_key_qrcode = new QRCode(document.getElementById("private_key_qr_code_1"), {
+	  text: private_key,
+	  width: 256,
+	  height: 256,
 	  colorDark : "#000000",
 	  colorLight : "#ffffff",
 	  correctLevel : QRCode.CorrectLevel.H
