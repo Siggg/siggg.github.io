@@ -16,7 +16,7 @@ description : projets du hackathon
         <ul>
           <li>sous forme textuelle : <span id="private_key_string_1">En cours de calcul...</span></li>
           <li>sous forme graphique : <span id="private_key_qr_code_1"> </span></li>
-          <li>sous forme de 12 mots  (à conserver précieusement) : <span id="private_key_bip39_1">En cours de calcul...</span></li>
+          <li>sous forme de 12 mots  (à conserver précieusement) : <span id="private_key_seed_1">En cours de calcul...</span></li>
         </ul>
       </li>
     </ul>
@@ -27,14 +27,18 @@ description : projets du hackathon
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/ethereumjs-wallet-0.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eth-lightwallet@3.0.1/dist/lightwallet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethereumjs-util@5.2.0/dist/index.min.js"></script>
 <script src="js/qrcode.min.js"></script>
 <script>
+  var keystore = lightwallet.keystore;
+  var secret_seed_1 = keystore.generateRandomSeed();
   var account = ethereumjs.Wallet.generate();
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
   var public_address = account.getAddressString();
   var checksum_address = account.getChecksumAddressString();
   // var json_wallet = account.toV3("secret");
+  $('#private_key_seed_1').html(secret_seed_1);
   $('#public_address_string_1').html(checksum_address);
   $('#private_key_string_1').html(private_key);
   var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_1"), {
