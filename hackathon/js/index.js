@@ -1,5 +1,5 @@
 var i;
-for (i = 0; i < 9; i++) {
+for (i = 0; i < 10; i++) {
   // var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
 
   // var mnemonic = bip39.generateMnemonic()
@@ -35,10 +35,13 @@ for (i = 0; i < 9; i++) {
 } 
 
 var i;
+var zip = new JSZip();
+var qr_name;
 
 $(document).ready(function () {
   for (i = 0; i < 9; i++) {
-    var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_"+i), {
+    qr_name = "public_address_qr_code_"+i;
+    var public_address_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: checksum_address,
   	  width: 256,
   	  height: 256,
@@ -46,7 +49,9 @@ $(document).ready(function () {
   	  colorLight : "#ffffff",
   	  correctLevel : QRCode.CorrectLevel.H
     });
-    var private_key_qrcode = new QRCode(document.getElementById("private_key_qr_code_"+i), {
+    zip.file(qr_name, baseImg, {base64: true});
+    qr_name = "private_key_qr_code_"+i;
+    var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: private_key,
   	  width: 256,
   	  height: 256,
