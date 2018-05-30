@@ -36,8 +36,6 @@ for (i = 0; i < 10; i++) {
 
 var i;
 var zip = new JSZip();
-zip = zip.file("smile.gif", "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
-zip = zip.file("smile2.gif", "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
 
 $(document).ready(function () {
   for (i = 0; i < 9; i++) {
@@ -50,6 +48,9 @@ $(document).ready(function () {
   	  colorLight : "#ffffff",
   	  correctLevel : QRCode.CorrectLevel.H
     });
+    console.log("new");
+    console.log("qrname : ", qr_name);
+    console.log("public_address_qrcode : ", public_address_qrcode);
     var baseImg = public_address_qrcode._el.lastChild.src.split("base64,")[1];
     console.log(baseImg);
     zip.file(qr_name + '.png', baseImg, {base64: true});
