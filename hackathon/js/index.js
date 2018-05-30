@@ -5,7 +5,7 @@
   // var hdwallet = hdkey.fromMasterSeed(seed)
   var mnemonic = new Mnemonic("english");
   var secret_words_1 = mnemonic.generate();
-  var passphrase = "";
+  var passphrase = "verysecret";
   var secret_seed_1 = mnemonic.toSeed(secret_words_1, passphrase);
   var hdwallet = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1);
   // var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1).getWallet();
