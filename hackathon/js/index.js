@@ -7,17 +7,17 @@
   var secret_words_1 = mnemonic.generate();
   var passphrase = "";
   var secret_seed_1 = mnemonic.toSeed(secret_words_1, passphrase);
-  var path = "m/44'/60'/0'/0/0"
   var hdwallet = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1);
-  var account = hdwallet.derivePath(path).getWallet();
-
   // var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1).getWallet();
+  var path = "m/44'/60'/0'/0" // Jaxx and Metamask derivation Path
+  var node = hdwallet.derivePath(path);
+  var account = node.getWallet();
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
   var public_address = account.getAddressString();
   var checksum_address = account.getChecksumAddressString();
   // var json_wallet = account.toV3("secret");
-  $('#private_key_words_1').html(secret_words_1);
+  // $('#private_key_words_1').html(secret_words_1);
   $('#public_address_string_1').html(checksum_address);
   $('#private_key_string_1').html(private_key);
   var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_1"), {
