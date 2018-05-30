@@ -44,36 +44,26 @@ $(document).ready(function () {
     var public_address_qrcode = $("#qr_name").qrcode({ 
       // render method: 'canvas', 'image' or 'div'
       render: 'canvas',
-
       // version range somewhere in 1 .. 40
       minVersion: 1,
       maxVersion: 40,
-      
       // error correction level: 'L', 'M', 'Q' or 'H'
       ecLevel: 'H',
-
       // offset in pixel if drawn onto existing canvas
       left: 0,
       top: 0,
-
       // size in pixel
       size: 200,
-
       // code color or image element
       fill: '#000',
-
       // background color or image element, null for transparent background
       background: null,
-
       // content
       text: checksum_address,
-
       // corner radius relative to module width: 0.0 .. 0.5
       radius: 0,
-
       // quiet zone in modules
       quiet: 0,
-
       // modes
       // 0: normal
       // 1: label strip
@@ -81,27 +71,23 @@ $(document).ready(function () {
       // 3: image strip
       // 4: image box
       mode: 2,
-
       mSize: 0.1,
       mPosX: 0.5,
       mPosY: 0.5,
-
       label: 'no label',
       fontname: 'sans',
       fontcolor: '#000',
-
       image: null
-      
     });
     // console.log("new");
     // console.log("qrname : ", qr_name);
     // console.log("public_address_qrcode : ", public_address_qrcode);
     // console.log("its _el.lastChild : ", public_address_qrcode._el.lastChild);
-    var src = public_address_qrcode._el.lastChild.src;
-    console.log("src : ", src);
-    var baseImg = src.split("base64,")[1];
+    // var src = public_address_qrcode._el.lastChild.src;
+    // console.log("src : ", src);
+    // var baseImg = src.split("base64,")[1];
     console.log(baseImg);
-    zip.file(qr_name + '.png', baseImg, {base64: true});
+    zip.file(qr_name + '.png', public_address_qrcode); //, {base64: true});
     var qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: private_key,
@@ -117,7 +103,7 @@ $(document).ready(function () {
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
-    // saveAs(content, "example.zip");
+    saveAs(content, "example.zip");
   });
 });
 
