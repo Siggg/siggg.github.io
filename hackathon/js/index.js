@@ -64,9 +64,9 @@ $(document).ready(function () {
     baseImg = private_key_qrcode._el.lastChild.src.substr(22);
     zip.file(qr_name, baseImg, {base64: true});
   }
-});
-
-zip.generateAsync({type:"blob"})
+  zip.generateAsync({type:"blob"})
   .then(function(content) {
     saveAs(content, "example.zip");
+  });
 });
+
