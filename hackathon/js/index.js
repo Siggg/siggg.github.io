@@ -62,6 +62,7 @@ $(document).ready(function () {
     var baseImg = private_key_qrcode._el.lastChild.src.split("base64,")[1];
     zip.file(qr_name + '.png', baseImg, {base64: true});
   };
+  alert("pause");
   zip.generateAsync({type:"blob"})
   .then(function(content) {
     saveAs(content, "example.zip");
