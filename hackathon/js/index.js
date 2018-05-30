@@ -15,7 +15,7 @@ var qr_code_options = {
       // code color or image element
       fill: '#000',
       // background color or image element, null for transparent background
-      background: null,
+      background: '#fff',
       // content
       text: "no text",
       // corner radius relative to module width: 0.0 .. 0.5
@@ -90,6 +90,8 @@ for (i = 0; i < number_of_accounts; i++) {
   var qr_name = "private_key_qr_code_"+i;
   qr_code_options['label'] = "Clef secrète n°"+i;
   qr_code_options['text'] = private_key;
+  qr_code_options['fill'] = '#f99',
+  qr_code_options['fontcolor'] = '#f00',
   $("#" + qr_name).qrcode(qr_code_options);
   zip.file(padded_index + '_private_key.txt', private_key);
 }; 
