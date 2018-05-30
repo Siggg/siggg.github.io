@@ -1,5 +1,6 @@
+var number_of_accounts = 10;
 var i;
-for (i = 0; i < 10; i++) {
+for (i = 0; i < number_of_accounts; i++) {
   // var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
 
   // var mnemonic = bip39.generateMnemonic()
@@ -38,7 +39,7 @@ var i;
 var zip = new JSZip();
 
 $(document).ready(function () {
-  for (i = 0; i < 9; i++) {
+  for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
     var public_address_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: checksum_address,
@@ -51,6 +52,7 @@ $(document).ready(function () {
     console.log("new");
     console.log("qrname : ", qr_name);
     console.log("public_address_qrcode : ", public_address_qrcode);
+    console.log("its _el.lastChild : ", public_address_qrcode._el.lastChild);
     var baseImg = public_address_qrcode._el.lastChild.src.split("base64,")[1];
     console.log(baseImg);
     zip.file(qr_name + '.png', baseImg, {base64: true});
