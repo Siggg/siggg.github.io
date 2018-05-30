@@ -17,7 +17,7 @@ description : projets du hackathon
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/ethereumjs-wallet-0.6.0.min.js"></script>
 <script src="js/ethereumjs-wallet-hd-0.6.0.min.js"></script>
-<script src="js/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-qrcode2@1.0.0/dist/jquery-qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/unorm.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/sjcl-bip39.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_english.js"></script>
