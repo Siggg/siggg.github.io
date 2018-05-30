@@ -51,7 +51,7 @@ $(document).ready(function () {
   	  correctLevel : QRCode.CorrectLevel.H
     });
     baseImg = public_address_qrcode._el.lastChild.src.substr(22);
-    zip.file(qr_name, baseImg, {base64: true});
+    zip.file(qr_name + '.png', baseImg, {base64: true});
     qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: private_key,
@@ -62,7 +62,7 @@ $(document).ready(function () {
   	  correctLevel : QRCode.CorrectLevel.H
     });
     baseImg = private_key_qrcode._el.lastChild.src.substr(22);
-    zip.file(qr_name, baseImg, {base64: true});
+    zip.file(qr_name + '.png', baseImg, {base64: true});
   }
   zip.generateAsync({type:"blob"})
   .then(function(content) {
