@@ -49,11 +49,13 @@ $(document).ready(function () {
   	  colorLight : "#ffffff",
   	  correctLevel : QRCode.CorrectLevel.H
     });
-    console.log("new");
-    console.log("qrname : ", qr_name);
-    console.log("public_address_qrcode : ", public_address_qrcode);
-    console.log("its _el.lastChild : ", public_address_qrcode._el.lastChild);
-    var baseImg = public_address_qrcode._el.lastChild.src.split("base64,")[1];
+    // console.log("new");
+    // console.log("qrname : ", qr_name);
+    // console.log("public_address_qrcode : ", public_address_qrcode);
+    // console.log("its _el.lastChild : ", public_address_qrcode._el.lastChild);
+    var src = public_address_qrcode._el.lastChild.src;
+    console.log("src : ", src);
+    var baseImg = src.split("base64,")[1];
     console.log(baseImg);
     zip.file(qr_name + '.png', baseImg, {base64: true});
     var qr_name = "private_key_qr_code_"+i;
