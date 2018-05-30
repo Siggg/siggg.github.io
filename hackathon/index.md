@@ -2,26 +2,16 @@
 title: test hackathon
 description : projets du hackathon
 ---
-<ul>
-  <lh>Comptes</lh>
-  <li>Compte n°1
-    <ul>
-      <li>Adresse publique (à communiquer largement) :
-        <ul>
-          <li><span id="public_address_string_1">En cours de calcul...</span></li>
-          <li id="public_address_qr_code_1"></li>
-        </ul>
-      </li>
-      <li>Clef secrète correspondante (à conserver précieusement):
-        <ul>
-          <li><span id="private_key_string_1">En cours de calcul...</span></li>
-          <li><span id="private_key_qr_code_1"> </span></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+## Comptes
 
+# Compte n°1
+
+Adresse publique | Clef secrète
+---|---
+<span id="public_address_string_1">En cours de calcul...</span> | <span id="private_key_string_1">En cours de calcul...</span>
+<span id="public_address_qr_code_1"></span> | <span id="private_key_qr_code_1"> </span>
+
+---
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/ethereumjs-wallet-0.6.0.min.js"></script>
