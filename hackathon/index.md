@@ -29,6 +29,7 @@ description : projets du hackathon
 <script src="js/ethereumjs-wallet-hd-0.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eth-lightwallet@3.0.1/dist/lightwallet.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bip39@2.5.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/bitcore-mnemonic@1.5.0/index.min.js"></script>
 <script src="js/qrcode.min.js"></script>
 <script>
   var keystore = lightwallet.keystore;
