@@ -38,7 +38,9 @@ var qr_code_options = {
       image: null
     };
 
-var number_of_accounts = 100;
+var number_of_accounts = 10;
+
+var zip = new JSZip();
 var i;
 for (i = 0; i < number_of_accounts; i++) {
   // var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
@@ -61,6 +63,7 @@ for (i = 0; i < number_of_accounts; i++) {
   var checksum_address = account.getChecksumAddressString();
   // var json_wallet = account.toV3("secret");
   // $('#private_key_words').html(secret_words_1);
+      
   $("#accounts")
     .find('tbody')
     .append('<tr><td><span id="public_address_string_' + i
@@ -82,27 +85,28 @@ for (i = 0; i < number_of_accounts; i++) {
   qr_code_options['label'] = "Adresse n°"+i;
   qr_code_options['text'] = checksum_address;
   $("#" + qr_name).qrcode(qr_code_options);
+  var padded_index = ("000" + i).slice(-3);
+  zip.file(padded_index + '_public_address.txt', checksum_address);
   var qr_name = "private_key_qr_code_"+i;
   qr_code_options['label'] = "Clef secrète n°"+i;
   qr_code_options['text'] = private_key;
   $("#" + qr_name).qrcode(qr_code_options);
+  zip.file(padded_index + '_private_key.txt', private_key);
 }; 
 
-var i;
-var zip = new JSZip();
-
 $(document).ready(function () {
+  var i;
   for (i = 0; i < number_of_accounts; i++) {
+    var padded_index = ("000" + i).slice(-3);
     var qr_name = "public_address_qr_code_"+i;
     var dataURL = $("#" + qr_name).get(0).toDataURL();
     // console.log(dataURL);
-    zip.file(qr_name + '.png', dataURL.split('base64,')[1], {base64: true});
+    zip.file(padded_index + '_public_address.png', dataURL.split('base64,')[1], {base64: true});
     var qr_name = "private_key_qr_code_"+i;
     var dataURL = $("#" + qr_name).get(0).toDataURL();
     // console.log(dataURL);
-    zip.file(qr_name + '.png', dataURL.split('base64,')[1], {base64: true});
+    zip.file(padded_index + '_private_key.png', dataURL.split('base64,')[1], {base64: true});
   };
-
   zip.generateAsync({type:"blob"})
   .then(function(content) {
     saveAs(content, "example.zip");
