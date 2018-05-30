@@ -28,11 +28,10 @@ description : projets du hackathon
 <script src="js/ethereumjs-wallet-0.6.0.min.js"></script>
 <script src="js/ethereumjs-wallet-hd-0.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eth-lightwallet@3.0.1/dist/lightwallet.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/bitpay/bitcore-mnemonic@1.2.5/bitcore-mnemonic.min.js"></script>
 <script src="js/qrcode.min.js"></script>
 <script>
   var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
-  var account = ethereumjs.Wallet.fromMasterSeed(secret_seed_1);
+  var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1);
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
   var public_address = account.getAddressString();
