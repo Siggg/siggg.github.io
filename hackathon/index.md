@@ -34,6 +34,27 @@ description : projets du hackathon
 <script>
   var keystore = lightwallet.keystore;
   var secret_seed_1 = keystore.generateRandomSeed();
+	var password = "secret";
+  keystore.deriveKeyFromPassword(password, function (err, pwDerivedKey) {
+    var ks = new lightwallet.keystore(secret_seed_1, pwDerivedKey);
+    // generate five new address/private key pairs
+    // the corresponding private keys are also encrypted
+    ks.generateNewAddress(pwDerivedKey, 5);
+    var addr = ks.getAddresses();
+    // Create a custom passwordProvider to prompt the user to enter their
+    // password whenever the hooked web3 provider issues a sendTransaction
+    // call.
+    ks.passwordProvider = function (callback) {
+      var pw = "secret";
+      callback(null, pw);
+    };
+    // Now set ks as transaction_signer in the hooked web3 provider
+    // and you can start using web3 using the keys/addresses in ks!
+  });
+
+	
+	
+	
   var account = ethereumjs.Wallet.generate();
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
