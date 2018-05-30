@@ -14,7 +14,7 @@
   var account = node.getWallet();
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
-  var public_address = account.getAddressString();
+  // var public_address = account.getAddressString();
   var checksum_address = account.getChecksumAddressString();
   // var json_wallet = account.toV3("secret");
   // $('#private_key_words_1').html(secret_words_1);
