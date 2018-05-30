@@ -7,7 +7,6 @@ description : projets du hackathon
 <table id="accounts">
  <tr>
    <th>Adresse publique</th>
-   <th>Numéro</th>
    <th>Clef secrète</th>
  </tr>
 </table>
