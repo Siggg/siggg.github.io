@@ -86,7 +86,7 @@ $(document).ready(function () {
     // var src = public_address_qrcode._el.lastChild.src;
     // console.log("src : ", src);
     // var baseImg = src.split("base64,")[1];
-    console.log(baseImg);
+    // console.log(baseImg);
     zip.file(qr_name + '.png', public_address_qrcode); //, {base64: true});
     /*
     var qr_name = "private_key_qr_code_"+i;
