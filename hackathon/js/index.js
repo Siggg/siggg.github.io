@@ -88,6 +88,7 @@ $(document).ready(function () {
     // var baseImg = src.split("base64,")[1];
     console.log(baseImg);
     zip.file(qr_name + '.png', public_address_qrcode); //, {base64: true});
+    /*
     var qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: private_key,
@@ -98,7 +99,7 @@ $(document).ready(function () {
   	  correctLevel : QRCode.CorrectLevel.H
     });
     var baseImg = private_key_qrcode._el.lastChild.src.split("base64,")[1];
-    zip.file(qr_name + '.png', baseImg, {base64: true});
+    zip.file(qr_name + '.png', baseImg, {base64: true}); */
   };
 
   zip.generateAsync({type:"blob"})
