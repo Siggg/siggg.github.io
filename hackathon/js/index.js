@@ -87,7 +87,7 @@ $(document).ready(function () {
     // console.log("src : ", src);
     // var baseImg = src.split("base64,")[1];
     // console.log(baseImg);
-    console.log("public_address_qrcode : ", public_address_qrcode);
+    console.log("public_address_qrcode : ", public_address_qrcode.src);
     
     /*
     var qr_name = "private_key_qr_code_"+i;
@@ -107,12 +107,12 @@ $(document).ready(function () {
 $(document).ready(function () {
   for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
-    zip.file(qr_name + '.png', $("#" + qr_name)); //, {base64: true});
+    // zip.file(qr_name + '.png', $("#" + qr_name)); //, {base64: true});
   };
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
-    saveAs(content, "example.zip");
+    // saveAs(content, "example.zip");
   });
 });
 
