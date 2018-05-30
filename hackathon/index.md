@@ -34,7 +34,7 @@ description : projets du hackathon
   var keystore = lightwallet.keystore;
   var secret_seed_1 = keystore.generateRandomSeed();
 	var password = "secret";
-  keystore.deriveKeyFromPassword(password, function (err, pwDerivedKey) {
+  keystore.deriveKeyFromPasswordAndSalt(password, "salt", function (err, pwDerivedKey) {
     var ks = new lightwallet.keystore(secret_seed_1, pwDerivedKey);
     // generate five new address/private key pairs
     // the corresponding private keys are also encrypted
