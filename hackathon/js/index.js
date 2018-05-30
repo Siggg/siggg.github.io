@@ -35,8 +35,7 @@ for (i = 0; i < number_of_accounts; i++) {
             + '"></canvas></td></tr>');
   $('#public_address_string_'+i).html(checksum_address);
   $('#private_key_string_'+i).html(private_key);
-  var qr_name = "public_address_qr_code_"+i;
-  $("#" + qr_name).qrcode({ 
+  var qr_code_options = { 
       // render method: 'canvas', 'image' or 'div'
       render: 'canvas',
       // version range somewhere in 1 .. 40
@@ -48,7 +47,7 @@ for (i = 0; i < number_of_accounts; i++) {
       left: 0,
       top: 0,
       // size in pixel
-      size: 200,
+      size: 400,
       // code color or image element
       fill: '#000',
       // background color or image element, null for transparent background
@@ -56,9 +55,9 @@ for (i = 0; i < number_of_accounts; i++) {
       // content
       text: checksum_address,
       // corner radius relative to module width: 0.0 .. 0.5
-      radius: 0,
+      radius: 0.5,
       // quiet zone in modules
-      quiet: 0,
+      quiet: 1,
       // modes
       // 0: normal
       // 1: label strip
@@ -69,50 +68,17 @@ for (i = 0; i < number_of_accounts; i++) {
       mSize: 0.1,
       mPosX: 0.5,
       mPosY: 0.5,
-      label: checksum_address,
+      label: "compte n°" + i,
       fontname: 'sans',
       fontcolor: '#000',
       image: null
-    });
-    var qr_name = "private_key_qr_code_"+i;
-    $("#" + qr_name).qrcode({ 
-      // render method: 'canvas', 'image' or 'div'
-      render: 'canvas',
-      // version range somewhere in 1 .. 40
-      minVersion: 1,
-      maxVersion: 40,
-      // error correction level: 'L', 'M', 'Q' or 'H'
-      ecLevel: 'H',
-      // offset in pixel if drawn onto existing canvas
-      left: 0,
-      top: 0,
-      // size in pixel
-      size: 200,
-      // code color or image element
-      fill: '#000',
-      // background color or image element, null for transparent background
-      background: null,
-      // content
-      text: private_key,
-      // corner radius relative to module width: 0.0 .. 0.5
-      radius: 0,
-      // quiet zone in modules
-      quiet: 0,
-      // modes
-      // 0: normal
-      // 1: label strip
-      // 2: label box
-      // 3: image strip
-      // 4: image box
-      mode: 2,
-      mSize: 0.1,
-      mPosX: 0.5,
-      mPosY: 0.5,
-      label: private_key,
-      fontname: 'sans',
-      fontcolor: '#000',
-      image: null
-    });
+    };
+  var qr_name = "public_address_qr_code_"+i;
+  qr_code_options['text'] = checksum_address;
+  $("#" + qr_name).qrcode(qr_code_options);
+  var qr_name = "private_key_qr_code_"+i;
+  qr_code_options['text'] = private_key;
+  $("#" + qr_name).qrcode(qr_code_options);
 }; 
 
 var i;
@@ -122,7 +88,11 @@ $(document).ready(function () {
   for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
     var dataURL = $("#" + qr_name).get(0).toDataURL();
-    console.log(dataURL);
+    // console.log(dataURL);
+    zip.file(qr_name + '.png', dataURL.split('base64,')[1], {base64: true});
+    var qr_name = "private_key_qr_code_"+i;
+    var dataURL = $("#" + qr_name).get(0).toDataURL();
+    // console.log(dataURL);
     zip.file(qr_name + '.png', dataURL.split('base64,')[1], {base64: true});
   };
 
