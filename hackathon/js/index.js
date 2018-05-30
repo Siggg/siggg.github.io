@@ -1,5 +1,5 @@
 var i;
-for (i = 0; i < 2; i++) {
+for (i = 0; i < 9; i++) {
   // var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
 
   // var mnemonic = bip39.generateMnemonic()
@@ -32,7 +32,12 @@ for (i = 0; i < 2; i++) {
             + '"></span></td></tr>');
   $('#public_address_string_'+i).html(checksum_address);
   $('#private_key_string_'+i).html(private_key);
-  $(document).ready(function () {
+} 
+
+var i;
+
+$(document).ready(function () {
+  for (i = 0; i < 9; i++) {
     var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_"+i), {
   	  text: checksum_address,
   	  width: 256,
@@ -49,7 +54,5 @@ for (i = 0; i < 2; i++) {
   	  colorLight : "#ffffff",
   	  correctLevel : QRCode.CorrectLevel.H
     });
-  });
-} 
-
-
+  }
+});
