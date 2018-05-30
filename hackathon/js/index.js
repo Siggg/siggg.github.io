@@ -38,7 +38,6 @@ var i;
 var zip = new JSZip();
 zip.file("smile.gif", "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
 zip.file("smile2.gif", "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
-zip.file("smilenot.gif", "R0lGOFDSFDSDdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
 
 $(document).ready(function () {
   for (i = 0; i < 9; i++) {
