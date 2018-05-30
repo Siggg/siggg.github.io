@@ -41,51 +41,56 @@ var zip = new JSZip();
 $(document).ready(function () {
   for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
-    var public_address_qrcode = $("#qr_name").qrcode({
+    var public_address_qrcode = $("#qr_name").qrcode({ 
+      // render method: 'canvas', 'image' or 'div'
+      render: 'canvas',
+
+      // version range somewhere in 1 .. 40
+      minVersion: 1,
+      maxVersion: 40,
       
       // error correction level: 'L', 'M', 'Q' or 'H'
-      ecLevel: '// error correction level: 'L', 'M', 'Q' or 'H'
-    ecLevel: 'H',
+      ecLevel: 'H',
 
-    // offset in pixel if drawn onto existing canvas
-    left: 0,
-    top: 0,
+      // offset in pixel if drawn onto existing canvas
+      left: 0,
+      top: 0,
 
-    // size in pixel
-    size: 200,
+      // size in pixel
+      size: 200,
 
-    // code color or image element
-    fill: '#000',
+      // code color or image element
+      fill: '#000',
 
-    // background color or image element, null for transparent background
-    background: null,
+      // background color or image element, null for transparent background
+      background: null,
 
-    // content
-    text: checksum_address,
+      // content
+      text: checksum_address,
 
-    // corner radius relative to module width: 0.0 .. 0.5
-    radius: 0,
+      // corner radius relative to module width: 0.0 .. 0.5
+      radius: 0,
 
-    // quiet zone in modules
-    quiet: 0,
+      // quiet zone in modules
+      quiet: 0,
 
-    // modes
-    // 0: normal
-    // 1: label strip
-    // 2: label box
-    // 3: image strip
-    // 4: image box
-    mode: 2,
+      // modes
+      // 0: normal
+      // 1: label strip
+      // 2: label box
+      // 3: image strip
+      // 4: image box
+      mode: 2,
 
-    mSize: 0.1,
-    mPosX: 0.5,
-    mPosY: 0.5,
+      mSize: 0.1,
+      mPosX: 0.5,
+      mPosY: 0.5,
 
-    label: 'no label',
-    fontname: 'sans',
-    fontcolor: '#000',
+      label: 'no label',
+      fontname: 'sans',
+      fontcolor: '#000',
 
-    image: null
+      image: null
       
     });
     // console.log("new");
