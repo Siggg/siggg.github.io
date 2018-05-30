@@ -36,11 +36,10 @@ for (i = 0; i < 10; i++) {
 
 var i;
 var zip = new JSZip();
-var qr_name;
 
 $(document).ready(function () {
   for (i = 0; i < 9; i++) {
-    qr_name = "public_address_qr_code_"+i;
+    var qr_name = "public_address_qr_code_"+i;
     var public_address_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: checksum_address,
   	  width: 256,
@@ -51,7 +50,7 @@ $(document).ready(function () {
     });
     var baseImg = public_address_qrcode._el.lastChild.src.split("base64,")[1];
     zip.file(qr_name + '.png', baseImg, {base64: true});
-    qr_name = "private_key_qr_code_"+i;
+    var qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: private_key,
   	  width: 256,
