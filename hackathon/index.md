@@ -2,14 +2,12 @@
 title: test hackathon
 description : projets du hackathon
 ---
-## Comptes
+# Comptes
 
-# Compte n°1
-
-Adresse publique | Clef secrète
----|---
-<span id="public_address_string_1">En cours de calcul...</span> | <span id="private_key_string_1">En cours de calcul...</span>
-<span id="public_address_qr_code_1"></span> | <span id="private_key_qr_code_1"> </span>
+Numéro | Adresse publique | Clef secrète
+---|---|---
+<span id="index">1</span> | <span id="public_address_string_1">En cours de calcul...</span> | <span id="private_key_string_1">En cours de calcul...</span>
+ |<span id="public_address_qr_code_1"></span> | <span id="private_key_qr_code_1"> </span>
 
 ---
 
