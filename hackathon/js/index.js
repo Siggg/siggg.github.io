@@ -37,7 +37,6 @@ for (i = 0; i < 10; i++) {
 var i;
 var zip = new JSZip();
 var qr_name;
-var baseImg;
 
 $(document).ready(function () {
   for (i = 0; i < 9; i++) {
@@ -50,7 +49,7 @@ $(document).ready(function () {
   	  colorLight : "#ffffff",
   	  correctLevel : QRCode.CorrectLevel.H
     });
-    baseImg = public_address_qrcode._el.lastChild.src.substr(22);
+    var baseImg = public_address_qrcode._el.lastChild.src.split("base64,")[1];
     zip.file(qr_name + '.png', baseImg, {base64: true});
     qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
@@ -61,7 +60,7 @@ $(document).ready(function () {
   	  colorLight : "#ffffff",
   	  correctLevel : QRCode.CorrectLevel.H
     });
-    baseImg = private_key_qrcode._el.lastChild.src.substr(22);
+    var baseImg = private_key_qrcode._el.lastChild.src.split("base64,")[1];
     zip.file(qr_name + '.png', baseImg, {base64: true});
   }
   zip.generateAsync({type:"blob"})
