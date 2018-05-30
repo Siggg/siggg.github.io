@@ -6,7 +6,7 @@ description : projets du hackathon
 
 Adresse publique | Numéro | Clef secrète
 :---|:---:|---:
-<span id="public_address_string_1">En cours de calcul...</span> | <span id="account_index">1</span> | <span id="private_key_string_1">En cours de calcul...</span>
+<span id="public_address_string_1">En cours de calcul...</span> | <span id="account_index">1</span> hop | <span id="private_key_string_1">En cours de calcul...</span>
  |<span id="public_address_qr_code_1"></span> | <span id="private_key_qr_code_1"> </span>
 
 ---
@@ -26,4 +26,5 @@ Adresse publique | Numéro | Clef secrète
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_italian.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_korean.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/jsbip39.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Stuk/jszip-utils@v0.0.2/dist/jszip-utils.min.js"></script>
 <script src="js/index.js" defer></script>
