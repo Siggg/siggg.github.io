@@ -121,7 +121,9 @@ var zip = new JSZip();
 $(document).ready(function () {
   for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
-    zip.file(qr_name + '.png', $("#" + qr_name)); //, {base64: true});
+    $("#" + qr_name).then( function (content) {
+      zip.file(qr_name + '.png', content);
+    });
   };
 
   zip.generateAsync({type:"blob"})
