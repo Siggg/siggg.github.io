@@ -5,15 +5,15 @@ description : projets du hackathon
 # Comptes
 
 <table>
- <th>
- <td>Adresse publique</td>
- <td>Numéro</td>
- <td>Clef secrète</td>
- </th>
  <tr>
- <td><span id="public_address_string_1">En cours de calcul...</span><br /><span id="public_address_qr_code_1"></span></td>
- <td><span id="account_index">1</span><br /><span id="private_key_qr_code_1"> </span></td>
- <td><span id="private_key_string_1">En cours de calcul...</span></td>
+   <th>Adresse publique</th>
+   <th>Numéro</th>
+   <th>Clef secrète</th>
+ </tr>
+ <tr>
+   <td><span id="public_address_string_1">En cours de calcul...</span><br /><span id="public_address_qr_code_1"></span></td>
+   <td><span id="account_index">1</span><br /><span id="private_key_qr_code_1"> </span></td>
+   <td><span id="private_key_string_1">En cours de calcul...</span></td>
  </tr>
 </table>
 
