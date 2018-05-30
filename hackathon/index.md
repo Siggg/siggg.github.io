@@ -12,8 +12,8 @@ description : projets du hackathon
  </tr>
  <tr>
    <td><span id="public_address_string_1">En cours de calcul...</span><br /><span id="public_address_qr_code_1"></span></td>
-   <td><span id="account_index">1</span><br /><span id="private_key_qr_code_1"></span></td>
-   <td><span id="private_key_string_1">En cours de calcul...</span></td>
+   <td><span id="account_index">1</span></td>
+   <td><span id="private_key_string_1">En cours de calcul...</span><br /><span id="private_key_qr_code_1"></span></td>
  </tr>
 </table>
 
