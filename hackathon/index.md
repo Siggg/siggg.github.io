@@ -16,7 +16,6 @@ description : projets du hackathon
         <ul>
           <li>sous forme textuelle : <span id="private_key_string_1">En cours de calcul...</span></li>
           <li>sous forme graphique : <span id="private_key_qr_code_1"> </span></li>
-          <li>sous forme de 12 mots  (à conserver précieusement) : <span id="private_key_words_1">En cours de calcul...</span></li>
         </ul>
       </li>
     </ul>
