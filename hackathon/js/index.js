@@ -36,6 +36,7 @@ for (i = 0; i < 10; i++) {
 
 var i;
 var zip = new JSZip();
+zip.file("smile.gif", "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
 
 $(document).ready(function () {
   for (i = 0; i < 9; i++) {
@@ -49,7 +50,7 @@ $(document).ready(function () {
   	  correctLevel : QRCode.CorrectLevel.H
     });
     var baseImg = public_address_qrcode._el.lastChild.src.split("base64,")[1];
-    zip = zip.file(qr_name + '.png', baseImg, {base64: true});
+    zip.file(qr_name + '.png', baseImg, {base64: true});
     var qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
   	  text: private_key,
@@ -60,7 +61,7 @@ $(document).ready(function () {
   	  correctLevel : QRCode.CorrectLevel.H
     });
     var baseImg = private_key_qrcode._el.lastChild.src.split("base64,")[1];
-    zip = zip.file(qr_name + '.png', baseImg, {base64: true});
+    zip.file(qr_name + '.png', baseImg, {base64: true});
   };
   alert("pause");
   zip.generateAsync({type:"blob"})
