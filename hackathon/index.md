@@ -9,7 +9,7 @@ description : projets du hackathon
       <li>Adresse publique (à communiquer largement) :
         <ul>
           <li><span id="public_address_string_1">En cours de calcul...</span></li>
-          <li><span id="public_address_qr_code_1"> </span></li>
+          <li id="public_address_qr_code_1"></li>
         </ul>
       </li>
       <li>Clef secrète correspondante (à conserver précieusement):
