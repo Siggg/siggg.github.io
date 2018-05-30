@@ -40,7 +40,7 @@ description : projets du hackathon
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_italian.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_korean.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/jsbip39.js"></script>
-<script>
+<script defer>
   var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
   // var mnemonic = bip39.generateMnemonic()
   // var seed = bip39.mnemonicToSeed(mnemonic)
