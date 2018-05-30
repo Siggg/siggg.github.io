@@ -81,10 +81,11 @@ for (i = 0; i < number_of_accounts; i++) {
   $('#private_key_string_'+i).html(private_key);
 
   var qr_name = "public_address_qr_code_"+i;
-  qr_code_options['label'] = "compte n°"+i;
+  qr_code_options['label'] = "Adresse n°"+i;
   qr_code_options['text'] = checksum_address;
   $("#" + qr_name).qrcode(qr_code_options);
   var qr_name = "private_key_qr_code_"+i;
+  qr_code_options['label'] = "Clef secrète n°"+i;
   qr_code_options['text'] = private_key;
   $("#" + qr_name).qrcode(qr_code_options);
 }; 
