@@ -1,4 +1,5 @@
-  var qr_code_options = { 
+var qr_code_size = 400;
+var qr_code_options = { 
       // render method: 'canvas', 'image' or 'div'
       render: 'canvas',
       // version range somewhere in 1 .. 40
@@ -10,7 +11,7 @@
       left: 0,
       top: 0,
       // size in pixel
-      size: 400,
+      size: qr_code_size,
       // code color or image element
       fill: '#000',
       // background color or image element, null for transparent background
@@ -64,13 +65,17 @@ for (i = 0; i < number_of_accounts; i++) {
     .find('tbody')
     .append('<tr><td><span id="public_address_string_' + i
             + '">En cours de calcul...</span><br />'
-            + '<canvas id="public_address_qr_code_' + i
+            + '<canvas width="' + qr_code_size
+            + '" height="' + qr_code_size
+            + '" id="public_address_qr_code_' + i
             + '"></canvas></td>'
             + '<td><span id="account_index">' + i
             + '</span></td>'
             + '<td><span id="private_key_string_' + i
             + '">En cours de calcul...</span><br />'
-            + '<canvas id="private_key_qr_code_' + i
+            + '<canvas width="' + qr_code_size
+            + '" height="' + qr_code_size
+            + '" id="private_key_qr_code_' + i
             + '"></canvas></td></tr>');
   $('#public_address_string_'+i).html(checksum_address);
   $('#private_key_string_'+i).html(private_key);
