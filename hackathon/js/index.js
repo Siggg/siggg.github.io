@@ -22,14 +22,14 @@ for (i = 0; i < 2; i++) {
   // $('#private_key_words').html(secret_words_1);
   $("#accounts")
     .find('tbody')
-    .append('<td><span id="public_address_string_' + i
+    .append('<tr><td><span id="public_address_string_' + i
             + '">En cours de calcul...</span><br /><span id="public_address_qr_code_' + i
             + '"></span></td>'
             + '<td><span id="account_index">' + i
             + '</span></td>'
             + '<td><span id="private_key_string_' + i
             + '">En cours de calcul...</span><br /><span id="private_key_qr_code_' + i
-            + '"></span></td>');
+            + '"></span></td></tr>');
   $('#public_address_string_'+i).html(checksum_address);
   $('#private_key_string_'+i).html(private_key);
   $(document).ready(function () {
