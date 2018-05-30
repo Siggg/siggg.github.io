@@ -78,7 +78,7 @@ $(document).ready(function () {
       fontname: 'sans',
       fontcolor: '#000',
       image: null
-    });
+    }).then(function() { console.log(public_address_qrcode.src); } );
     // console.log("new");
     // console.log("qrname : ", qr_name);
     // console.log("public_address_qrcode : ", public_address_qrcode);
@@ -87,6 +87,7 @@ $(document).ready(function () {
     // console.log("src : ", src);
     // var baseImg = src.split("base64,")[1];
     // console.log(baseImg);
+    console.log("public_address_qrcode : ", public_address_qrcode);
     zip.file(qr_name + '.png', public_address_qrcode); //, {base64: true});
     /*
     var qr_name = "private_key_qr_code_"+i;
