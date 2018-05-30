@@ -71,7 +71,7 @@ $(document).ready(function () {
   zip.file("smile3.gif", "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=", {base64: true});
   zip.generateAsync({type:"blob"})
   .then(function(content) {
-    saveAs(content, "example.zip");
+    // saveAs(content, "example.zip");
   });
 });
 
