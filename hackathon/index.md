@@ -31,6 +31,18 @@ description : projets du hackathon
 <script src="js/qrcode.min.js"></script>
 <script>
   var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
+  // var mnemonic = bip39.generateMnemonic()
+  // var seed = bip39.mnemonicToSeed(mnemonic)
+  // var hdwallet = hdkey.fromMasterSeed(seed)
+  
+  var password = "";
+  var secretSeed = secret_seed_1;
+  var ks = new lightwallet.keystore(secretSeed, password);
+  // generate five new address/private key pairs
+  // the corresponding private keys are also encrypted
+  ks.generateNewAddress(password, 5);
+  var addr = ks.getAddresses();
+  
   var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1).getWallet();
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
