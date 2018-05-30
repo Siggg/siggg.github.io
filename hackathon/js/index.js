@@ -41,7 +41,7 @@ var zip = new JSZip();
 $(document).ready(function () {
   for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
-    var public_address_qrcode = $("#qr_name").qrcode({ 
+    var public_address_qrcode = $("#" + qr_name).qrcode({ 
       // render method: 'canvas', 'image' or 'div'
       render: 'canvas',
       // version range somewhere in 1 .. 40
