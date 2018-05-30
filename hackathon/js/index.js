@@ -7,8 +7,11 @@
   var secret_words_1 = mnemonic.generate();
   var passphrase = "";
   var secret_seed_1 = mnemonic.toSeed(secret_words_1, passphrase);
-  
-  var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1).getWallet();
+  var path = "m/44'/60'/0'/0/0"
+  var hdwallet = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1);
+  var account = hdwallet.derivePath(path).getWallet();
+
+  // var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1).getWallet();
   var private_key = account.getPrivateKey().toString('hex');
   // var public_key = account.getPublicKeyString();
   var public_address = account.getAddressString();
