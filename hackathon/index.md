@@ -29,19 +29,22 @@ description : projets du hackathon
 <script src="js/ethereumjs-wallet-hd-0.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eth-lightwallet@3.0.1/dist/lightwallet.min.js"></script>
 <script src="js/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/unorm.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/sjcl-bip39.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_english.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_japanese.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_spanish.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_chinese_simplified.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_chinese_traditional.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_french.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_italian.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_korean.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/jsbip39.js"></script>
 <script>
   var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
   // var mnemonic = bip39.generateMnemonic()
   // var seed = bip39.mnemonicToSeed(mnemonic)
   // var hdwallet = hdkey.fromMasterSeed(seed)
-  
-  var password = "";
-  var secretSeed = secret_seed_1;
-  var ks = new lightwallet.keystore(secretSeed, password);
-  // generate five new address/private key pairs
-  // the corresponding private keys are also encrypted
-  ks.generateNewAddress(password, 5);
-  var addr = ks.getAddresses();
   
   var account = ethereumjs.WalletHD.fromMasterSeed(secret_seed_1).getWallet();
   var private_key = account.getPrivateKey().toString('hex');
