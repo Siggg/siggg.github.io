@@ -30,5 +30,6 @@ description : projets du hackathon
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/wordlist_korean.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/iancoleman/bip39@0.3.7/src/js/jsbip39.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.1.5/dist/jszip.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip-utils@0.0.2/dist/jszip-utils.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/file-saver@1.3.8/FileSaver.min.js"></script>
 <script src="js/index.js" defer></script>
