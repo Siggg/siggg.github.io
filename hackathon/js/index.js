@@ -38,7 +38,7 @@ var qr_code_options = {
       image: null
     };
 
-var number_of_accounts = 10;
+var number_of_accounts = 100;
 var i;
 for (i = 0; i < number_of_accounts; i++) {
   // var secret_seed_1 = lightwallet.keystore.generateRandomSeed();
@@ -69,8 +69,6 @@ for (i = 0; i < number_of_accounts; i++) {
             + '" height="' + qr_code_size
             + '" id="public_address_qr_code_' + i
             + '"></canvas></td>'
-            + '<td><span id="account_index">' + i
-            + '</span></td>'
             + '<td><span id="private_key_string_' + i
             + '">En cours de calcul...</span><br />'
             + '<canvas width="' + qr_code_size
