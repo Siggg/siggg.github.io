@@ -6,7 +6,7 @@ description : projets du hackathon
 
 Adresse publique | Numéro | Clef secrète
 :---|:---:|---:
-<span id="public_address_string_1">En cours de calcul...</span> | <span id="index">1</span> | <span id="private_key_string_1">En cours de calcul...</span>
+<span id="public_address_string_1">En cours de calcul...</span> | <span id="account_index">1</span> | <span id="private_key_string_1">En cours de calcul...</span>
  |<span id="public_address_qr_code_1"></span> | <span id="private_key_qr_code_1"> </span>
 
 ---
