@@ -24,13 +24,15 @@ for (i = 0; i < number_of_accounts; i++) {
   $("#accounts")
     .find('tbody')
     .append('<tr><td><span id="public_address_string_' + i
-            + '">En cours de calcul...</span><br /><span id="public_address_qr_code_' + i
-            + '"></span></td>'
+            + '">En cours de calcul...</span><br />'
+            + '<canvas id="public_address_qr_code_' + i
+            + '"></canvas></td>'
             + '<td><span id="account_index">' + i
             + '</span></td>'
             + '<td><span id="private_key_string_' + i
-            + '">En cours de calcul...</span><br /><span id="private_key_qr_code_' + i
-            + '"></span></td></tr>');
+            + '">En cours de calcul...</span><br />'
+            + '<canvas id="private_key_qr_code_' + i
+            + '"></canvas></td></tr>');
   $('#public_address_string_'+i).html(checksum_address);
   $('#private_key_string_'+i).html(private_key);
   var qr_name = "public_address_qr_code_"+i;
@@ -72,7 +74,7 @@ for (i = 0; i < number_of_accounts; i++) {
       fontcolor: '#000',
       image: null
     });
-    var qr_name = "private_address_qr_code_"+i;
+    var qr_name = "private_key_qr_code_"+i;
     $("#" + qr_name).qrcode({ 
       // render method: 'canvas', 'image' or 'div'
       render: 'canvas',
@@ -119,12 +121,12 @@ var zip = new JSZip();
 $(document).ready(function () {
   for (i = 0; i < number_of_accounts; i++) {
     var qr_name = "public_address_qr_code_"+i;
-    // zip.file(qr_name + '.png', $("#" + qr_name)); //, {base64: true});
+    zip.file(qr_name + '.png', $("#" + qr_name)); //, {base64: true});
   };
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
-    // saveAs(content, "example.zip");
+    saveAs(content, "example.zip");
   });
 });
 
