@@ -32,21 +32,23 @@ for (i = 0; i < 2; i++) {
             + '"></span></td>');
   $('#public_address_string_'+i).html(checksum_address);
   $('#private_key_string_'+i).html(private_key);
-  var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_"+i), {
-	  text: checksum_address,
-	  width: 256,
-	  height: 256,
-	  colorDark : "#000000",
-	  colorLight : "#ffffff",
-	  correctLevel : QRCode.CorrectLevel.H
-  });
-  var private_key_qrcode = new QRCode(document.getElementById("private_key_qr_code_"+i), {
-	  text: private_key,
-	  width: 256,
-	  height: 256,
-	  colorDark : "#000000",
-	  colorLight : "#ffffff",
-	  correctLevel : QRCode.CorrectLevel.H
+  $(document).ready(function () {
+    var public_address_qrcode = new QRCode(document.getElementById("public_address_qr_code_"+i), {
+  	  text: checksum_address,
+  	  width: 256,
+  	  height: 256,
+  	  colorDark : "#000000",
+  	  colorLight : "#ffffff",
+  	  correctLevel : QRCode.CorrectLevel.H
+    });
+    var private_key_qrcode = new QRCode(document.getElementById("private_key_qr_code_"+i), {
+  	  text: private_key,
+  	  width: 256,
+  	  height: 256,
+  	  colorDark : "#000000",
+  	  colorLight : "#ffffff",
+  	  correctLevel : QRCode.CorrectLevel.H
+    });
   });
 } 
 
