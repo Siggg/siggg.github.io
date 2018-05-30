@@ -78,7 +78,7 @@ $(document).ready(function () {
       fontname: 'sans',
       fontcolor: '#000',
       image: null
-    }).then(function() { console.log(public_address_qrcode.src); } );
+    });
     // console.log("new");
     // console.log("qrname : ", qr_name);
     // console.log("public_address_qrcode : ", public_address_qrcode);
@@ -88,7 +88,7 @@ $(document).ready(function () {
     // var baseImg = src.split("base64,")[1];
     // console.log(baseImg);
     console.log("public_address_qrcode : ", public_address_qrcode);
-    zip.file(qr_name + '.png', public_address_qrcode); //, {base64: true});
+    
     /*
     var qr_name = "private_key_qr_code_"+i;
     var private_key_qrcode = new QRCode(document.getElementById(qr_name), {
@@ -102,10 +102,18 @@ $(document).ready(function () {
     var baseImg = private_key_qrcode._el.lastChild.src.split("base64,")[1];
     zip.file(qr_name + '.png', baseImg, {base64: true}); */
   };
+});
+
+$(document).ready(function () {
+  for (i = 0; i < number_of_accounts; i++) {
+    var qr_name = "public_address_qr_code_"+i;
+    zip.file(qr_name + '.png', $("#" + qr_name)); //, {base64: true});
+  };
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
     saveAs(content, "example.zip");
   });
 });
+
 
