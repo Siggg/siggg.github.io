@@ -90,7 +90,7 @@ for (i = 0; i < number_of_accounts; i++) {
   var padded_index = ("000" + i).slice(-3);
   zip.file(padded_index + '_public_address.txt', checksum_address);
   var qr_name = "private_key_qr_code_"+i;
-  qr_code_options['label'] = "Joyeux Anniversaire !"; //"Clef secrète n°"+i;
+  qr_code_options['label'] = "Clef secrète n°"+i;
   qr_code_options['text'] = private_key;
   qr_code_options['fill'] = '#400',
   qr_code_options['fontcolor'] = '#f00',
