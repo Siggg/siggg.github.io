@@ -82,7 +82,7 @@ for (i = 0; i < number_of_accounts; i++) {
   $('#private_key_string_'+i).html(private_key);
 
   var qr_name = "public_address_qr_code_"+i;
-  qr_code_options['label'] = "Adresse "+checksum_address.substring(0,5);
+  qr_code_options['label'] = "Adresse "+checksum_address.substring(0,7) + "...";
   qr_code_options['text'] = checksum_address;
   qr_code_options['fill'] = '#000',
   qr_code_options['fontcolor'] = '#000',
@@ -90,7 +90,7 @@ for (i = 0; i < number_of_accounts; i++) {
   var padded_index = ("000" + i).slice(-3);
   zip.file(padded_index + '_public_address.txt', checksum_address);
   var qr_name = "private_key_qr_code_"+i;
-  qr_code_options['label'] = "Clef secrète "+checksum_address.substring(0,5);
+  qr_code_options['label'] = "Clef secrète pour "+checksum_address.substring(0,7) + "...";
   qr_code_options['text'] = private_key;
   qr_code_options['fill'] = '#400',
   qr_code_options['fontcolor'] = '#f00',
