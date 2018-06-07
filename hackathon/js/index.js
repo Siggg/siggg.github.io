@@ -39,7 +39,7 @@ var qr_code_options = {
       image: null
     };
 
-var number_of_accounts = 200;
+var number_of_accounts = 10;
 
 var zip = new JSZip();
 var i;
