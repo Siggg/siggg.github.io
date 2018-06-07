@@ -30,7 +30,7 @@ var qr_code_options = {
       // 4: image box
       mode: 2,
       // size of text
-      mSize: 0.05,
+      mSize: 0.08,
       mPosX: 0.5,
       mPosY: 0.5,
       label: "no label",
