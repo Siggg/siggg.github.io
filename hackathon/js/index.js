@@ -93,7 +93,7 @@ for (i = 0; i < number_of_accounts; i++) {
   var qr_name = "private_key_qr_code_"+i;
   qr_code_options['label'] = "Clé secrète pour "+checksum_address.substring(0,6) + "...";
   qr_code_options['text'] = private_key;
-  qr_code_options['fill'] = '#400',
+  qr_code_options['fill'] = '#900',
   qr_code_options['fontcolor'] = '#f00',
   $("#" + qr_name).qrcode(qr_code_options);
   zip.file(padded_index + '_private_key.txt', private_key);
