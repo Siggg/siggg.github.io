@@ -6,10 +6,9 @@ description : projets du hackathon
 
 # Compteur sur un compte
 
-![QR code du contrat de don](/contract_qr_code.png)
-
 Adresse du compte :
 <div id="account_address">(chargement en cours)</div>
+<div id="account_qr_code">(calcul en cours)</div>
 
 ## Les chiffres
 
@@ -32,8 +31,53 @@ Powered by Etherscan.io APIs
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-qrcode2@1.0.0/dist/jquery-qrcode.min.js"></script>
 <script>
-   var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
-   $('#account_address').html(account_address);
+    var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
+    $('#account_address').html(account_address);
+    var qr_code_size = 300;
+    var qr_code_options = { 
+        // render method: 'canvas', 'image' or 'div'
+        render: 'canvas',
+        // version range somewhere in 1 .. 40
+        minVersion: 1,
+        maxVersion: 40,
+        // error correction level: 'L', 'M', 'Q' or 'H'
+        ecLevel: 'H',
+        // offset in pixel if drawn onto existing canvas
+        left: 0,
+        top: 0,
+        // size in pixel
+        size: qr_code_size,
+        // code color or image element
+        fill: '#000',
+        // background color or image element, null for transparent background
+        background: '#fff',
+        // content
+        text: account_address,
+        // corner radius relative to module width: 0.0 .. 0.5
+        radius: 0.5,
+        // quiet zone in modules
+        quiet: 1,
+        // modes
+        // 0: normal
+        // 1: label strip
+        // 2: label box
+        // 3: image strip
+        // 4: image box
+        mode: 2,
+        // size of text
+        mSize: 0.08,
+        mPosX: 0.5,
+        mPosY: 0.5,
+        label: "Adresse " + account_address.substring(0,6) + "...",
+        fontname: 'sans',
+        fontcolor: '#000',
+        image: null
+    };
+    $("#account_qr_code").html('<canvas width="' + qr_code_size
+      + '" height="' + qr_code_size
+      + '" id="public_address_qr_code'
+      + '"></canvas>');
+    $("#public_address_qr_code").qrcode(qr_code_options);
     var etherscanAPIKeyToken = "XZYBD5MNJ6TEN28TZGMVTF2SZ9PGNVUV3K";
     var balance_request = "module=account&action=balance&address="
         + account_address
