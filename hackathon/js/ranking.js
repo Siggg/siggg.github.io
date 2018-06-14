@@ -36,7 +36,15 @@ var accounts = {};
 var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     console.log( "success", data );
     $.each(data, function(account_address, item) {
-        accounts[account_address] = item;
+        // update accounts from this JSON file
+        if (accounts[account_address] == undefined) {
+            accounts[account_address] = item;
+        } else {
+            accounts[account_address]["account_label"] = item["account_label"];
+            if (accounts[account_address] <=0) {
+                accounts[account_address]["collected_sum_eth"] = item["collected_sum_eth"];
+            };
+        };
         console.log(account_address, item["collected_sum_eth"], item["account_label"]);
     });
   })
