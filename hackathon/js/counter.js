@@ -26,7 +26,7 @@ This scripts requires the following scripts to be loaded before :
 Here you go. */
 
 // address of the Ethereum account to inspect
-var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
+var account_address = "0xD972634E4A036d91d0D4A35EF4927B63ac0Fa7F4";
 
 // Please do login to https://etherscan.io/myapikey and get an API key for your pages
 // so that mine does get blocked because of over-use
