@@ -1,3 +1,25 @@
+/*
+
+This script is released under the Affero General Public License version 3.0 or later (AGPL v.3.0)
+A copy of this license is available at https://www.gnu.org/licenses/agpl-3.0.html
+Copyright 2018 Conseil Départemental des Hauts-de-Seine & Jean Millerat
+
+In order to use this script, you will have to set the values of the following variables :
+- account_address
+- etherscanAPIKeyToken
+
+And you will have to create the following HTML elements in the web page calling this script so that it generates them :
+-	#collected_sum : sum of donations in ethers
+-   .collected_sum_eur : sum of donations in euros (at daily market price)
+-   #account_address : address of the Ethereum address to be inspected
+-	#account_qr_code : QR Code corresponding to this Ethereum address
+-	#collected_count : number of donations to this address
+-	#collection_fees_sum : sum of transaction/mining fees for donations, in ethers
+-	#collection_fees_sum_eur : sum of transaction/mining fees for donations, equivalent value in euros at daily market price
+-	#transactions : human readable list of donations for this address
+
+Here you go. */
+
 // address of the Ethereum account to inspect
 var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
 
@@ -150,3 +172,4 @@ $.getJSON( absolute_url_of_transactions_request )
   } )
   .fail( function(error) { console.log( "fail while trying to get contract transactions", error ); } )
   .always( function() { console.log( "always after trying to get contract transactions" ); } );
+
