@@ -18,6 +18,11 @@ And you will have to create the following HTML elements in the web page calling 
 -	#collection_fees_sum_eur : sum of transaction/mining fees for donations, equivalent value in euros at daily market price
 -	#transactions : human readable list of donations for this address
 
+This scripts requires the following scripts to be loaded before :
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-qrcode2@1.0.0/dist/jquery-qrcode.min.js"></script>
+
 Here you go. */
 
 // address of the Ethereum account to inspect
