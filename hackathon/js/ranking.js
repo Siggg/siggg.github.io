@@ -74,6 +74,9 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
             + etherscanAPIKeyToken;
         var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function(data) {
             console.log( "API success", data );
+            // Update accounts
+            // Update some of balances
+            // Display stuff
         })
         .done(function() {
             console.log( "API second success" );
