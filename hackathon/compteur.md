@@ -1,3 +1,7 @@
+---
+title: Compteur de dons
+description : Pour les projets du hackathon seniors et autonomies du CD92
+---
 ### <span class="collected_sum_eur">(chargement en cours)</span> euros collectés sur le compte <span id="account_address">(chargement en cours)</span>
 <div id="account_qr_code">(calcul en cours)</div>
 
