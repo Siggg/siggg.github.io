@@ -35,12 +35,13 @@ var accounts = {};
 // Load the description of the accounts to be ranked
 var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     console.log( "success", data );
-    $.each(data, function(i, item) {
-      console.log(i, data[i], item["collected_sum_eth"], item["account_label"]);
+    $.each(data, function(account_address, item) {
+        accounts[account_address] = item;
+        console.log(account_address, item["collected_sum_eth"], item["account_label"]);
     });
   })
   .done(function() {
-    console.log( "second success" );
+    console.log( "second success", accounts );
   })
   .fail(function(err) {
     console.log( "error", err );
