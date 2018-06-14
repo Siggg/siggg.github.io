@@ -4,21 +4,20 @@ description : projets du hackathon
 ---
 # [Générateur de comptes](comptes.md)
 
-# Compteur sur un compte
+# Compteur de dons
 
-Adresse du compte :
+Dons sur le compte :
 <div id="account_address">(chargement en cours)</div>
 <div id="account_qr_code">(calcul en cours)</div>
+Collectés : <span id="collected_sum_eur">(chargement en cours)</span>
 
-## Les chiffres
+## Détail du compte
 
 * Dons collectés, hors frais (en ethers) : <span id="collected_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="collected_sum_eur">(chargement en cours)</span> EUR
 * Dons collectés (nombre) : <span id="collected_count">(chargement en cours)</span>
 * Frais de sécurisation pour la collecte des dons (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
-* Retraits effectués depuis ce compte (en ethers) : <span id="withdrawn_sum">(chargement en cours)</span> ETH
-    * soit, en euros au cours moyen du jour : <span id="withdrawn_sum_eur">(chargement en cours)</span> EUR
 
 ## Détails des transactions :
 
@@ -119,15 +118,12 @@ Powered by Etherscan.io APIs
                            event = "Réception d'un don de " + value.toFixed(4) + " ETH";
                            event += " et paiement de " + collection_fees_sum.toFixed(4) + " ETH";
                            event += " par le donateur pour les frais de sécurisation de la collecte";
-                        } else {                    // withdrawal
-                           withdrawn_sum += value;
-                           event = "Retrait de " + value.toFixed(4) + " ETH";
+                           html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
+                              event +
+                              ' (' + dateString.substring(0,10) +
+                              ' à ' + dateString.substring(11,19) +
+                              ')</a></li>';
                         };
-                        html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                           event +
-                           ' (' + dateString.substring(0,10) +
-                           ' à ' + dateString.substring(11,19) +
-                           ')</a></li>';
                         break;
                     default:
                         event = item.input;
@@ -136,7 +132,6 @@ Powered by Etherscan.io APIs
             html += '</ul>';
             $('#transactions').html(html);
             // Fill the dashboard with figures
-            $('#withdrawn_sum').html(withdrawn_sum.toFixed(4));
             $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
             collection_fees_percent = collection_fees_sum / collected_sum * 100;
             $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
@@ -149,10 +144,8 @@ Powered by Etherscan.io APIs
             $.getJSON( absolute_url_of_price_request )
                     .done( function(data) {
                         var price = data.RAW.PRICE;
-                        var withdrawn_sum_eur = withdrawn_sum * price ;
                         var collection_fees_sum_eur = collection_fees_sum * price ;
                         var collected_sum_eur = collected_sum * price ;
-                        $('#withdrawn_sum_eur').html(withdrawn_sum_eur.toFixed(2));
                         $('#collection_fees_sum_eur').html(collection_fees_sum_eur.toFixed(2));
                         $('#collected_sum_eur').html(collected_sum_eur.toFixed(2));
                     } )
