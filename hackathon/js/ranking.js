@@ -40,12 +40,12 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
         if (accounts[account_address] == undefined) {
             accounts[account_address] = item;
         } else {
-            accounts[account_address]["account_label"] = item["account_label"];
+            accounts[account_address].account_label = item.account_label;
             if (accounts[account_address] <=0) {
-                accounts[account_address]["collected_sum_eth"] = item["collected_sum_eth"];
+                accounts[account_address].collected_sum_eth = item.collected_sum_eth;
             };
         };
-        console.log(account_address, item["collected_sum_eth"], item["account_label"]);
+        console.log(account_address, item.collected_sum_eth, item.account_label);
     });
   })
   .done(function() {
@@ -71,7 +71,7 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
         var absolute_url_of_balance_request = "https://api.etherscan.io/api?"
             + relative_url_of_balance_request ;
         var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function(data) {
-            console.log( "API success", data );
+            console.log( "API success", data.result );
             // Update accounts
             // Update some of balances
             // Display stuff
