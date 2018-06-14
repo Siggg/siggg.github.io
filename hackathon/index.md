@@ -24,7 +24,7 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 [Audit technique du contrat de don et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
-- Powered by Etherscan.io APIs -
+Powered by Etherscan.io APIs
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
@@ -74,32 +74,32 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
                            withdrawn_sum += value;
                            event = "Retrait de " + value.toFixed(4) + " ETH";
                         };
+                        html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
+                           event +
+                           ' (' + dateString.substring(0,10) +
+                           ' à ' + dateString.substring(11,19) +
+                           ')</a></li>';
                         break;
                     default:
                         event = item.input;
                 };
-                html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-                    event +
-                    ' (' + dateString.substring(0,10) +
-                    ' à ' + dateString.substring(11,19) +
-                    ')</a></li>';
-                });
-                html += '</ul>';
-                $('#transactions').html(html);
-                // Fill the dashboard with figures
-                $('#withdrawn_sum').html(withdrawn_sum.toFixed(4));
-                $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
-                collection_fees_percent = collection_fees_sum / collected_sum * 100;
-                $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
-                $('#collected_sum').html(collected_sum.toFixed(4));
-                $('#collected_count').html(collected_count);
-                $('#registrations_count').html(registrations_count);
-                $('#unregistrations_count').html(unregistrations_count);
-                //
-                // let's convert ETH sums into EUR
-                //
-                var absolute_url_of_price_request = "https://min-api.cryptocompare.com/data/generateAvg?fsym=ETH&tsym=EUR&e=Kraken";
-                $.getJSON( absolute_url_of_price_request )
+            });
+            html += '</ul>';
+            $('#transactions').html(html);
+            // Fill the dashboard with figures
+            $('#withdrawn_sum').html(withdrawn_sum.toFixed(4));
+            $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
+            collection_fees_percent = collection_fees_sum / collected_sum * 100;
+            $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
+            $('#collected_sum').html(collected_sum.toFixed(4));
+            $('#collected_count').html(collected_count);
+            $('#registrations_count').html(registrations_count);
+            $('#unregistrations_count').html(unregistrations_count);
+            //
+            // let's convert ETH sums into EUR
+            //
+            var absolute_url_of_price_request = "https://min-api.cryptocompare.com/data/generateAvg?fsym=ETH&tsym=EUR&e=Kraken";
+            $.getJSON( absolute_url_of_price_request )
                     .done( function(data) {
                         var price = data.RAW.PRICE;
                         var withdrawn_sum_eur = withdrawn_sum * price ;
