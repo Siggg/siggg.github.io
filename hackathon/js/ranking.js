@@ -29,7 +29,7 @@ var accounts_json_filename = "js/comptes.json";
 
 // Please do login to https://etherscan.io/myapikey and get an API key for your pages
 // so that mine does get blocked because of over-use
-var etherscanAPIKeyToken = "";
+var etherscanAPIKeyToken = "someRandomAPIKeyToken";
 var accounts = {};
 
 // Load the description of the accounts to be ranked
@@ -64,14 +64,12 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
         var batch_of_addresses = addresses.splice(0, BATCH_LIMIT);
         // Get balance of these addresses
         console.log("batch", batch_of_addresses);
-        var relative_url_of_balance_request = "module=account&action=balance&address="
+        var relative_url_of_balance_request = "module=account&action=balancemulti&address="
             + batch_of_addresses.join(",")
             + "&apikey="
             + etherscanAPIKeyToken;
         var absolute_url_of_balance_request = "https://api.etherscan.io/api?"
-            + relative_url_of_balance_request
-            + "&apikey="
-            + etherscanAPIKeyToken;
+            + relative_url_of_balance_request ;
         var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function(data) {
             console.log( "API success", data );
             // Update accounts
