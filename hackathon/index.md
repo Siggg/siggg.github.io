@@ -8,7 +8,8 @@ description : projets du hackathon
 
 ![QR code du contrat de don](/contract_qr_code.png)
 
-Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
+Adresse du compte :
+<div id="account_address"> (chargement en cours) </div>
 
 ## Les chiffres
 
@@ -27,9 +28,11 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 Powered by Etherscan.io APIs
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-qrcode2@1.0.0/dist/jquery-qrcode.min.js"></script>
 <script>
+   var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
+   $('#account_address').html(account_address);
     var etherscanAPIKeyToken = "XZYBD5MNJ6TEN28TZGMVTF2SZ9PGNVUV3K";
-    var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
     var balance_request = "module=account&action=balance&address="
         + account_address
         + "&tag=latest";
