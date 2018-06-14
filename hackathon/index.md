@@ -12,16 +12,13 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 
 ## Les chiffres
 
-* Dons distribués aux bénéficiaires (en ethers) : <span id="given_sum">(chargement en cours)</span> ETH
-    * soit, en euros au cours moyen du jour : <span id="given_sum_eur">(chargement en cours)</span> EUR
-* Frais de sécurisation à la charge des donateurs (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span> ETH
-    * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
 * Dons collectés, hors frais (en ethers) : <span id="collected_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="collected_sum_eur">(chargement en cours)</span> EUR
 * Dons collectés (nombre) : <span id="collected_count">(chargement en cours)</span>
-* Frais de sécurisation à la charge des donateurs (en % des dons collectés) : <span id="collection_fees_percent">(chargement en cours)</span> %
-* Inscriptions de bénéficiaires (nombre) : <span id="registrations_count">(chargement en cours)</span>
-* Désinscriptions de bénéficiaires (nombre) : <span id="unregistrations_count">(chargement en cours)</span>
+* Frais de sécurisation pour la collecte des dons (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span> ETH
+    * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
+* Retraits effectués depuis ce compte (en ethers) : <span id="given_sum">(chargement en cours)</span> ETH
+    * soit, en euros au cours moyen du jour : <span id="given_sum_eur">(chargement en cours)</span> EUR
 
 ## Les dernières transactions
 
