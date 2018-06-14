@@ -25,7 +25,7 @@ This scripts requires the following scripts to be loaded before :
 Here you go. */
 
 // Name of the JSON file describing the accounts to be ranked
-var accounts_json_filename = "comptes.json";
+var accounts_json_filename = "js/comptes.json";
 
 // Please do login to https://etherscan.io/myapikey and get an API key for your pages
 // so that mine does get blocked because of over-use
@@ -41,8 +41,8 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
   .done(function() {
     console.log( "second success" );
   })
-  .fail(function() {
-    console.log( "error" );
+  .fail(function(err) {
+    console.log( "error", err );
   })
   .always(function() {
     console.log( "complete" );
