@@ -89,12 +89,24 @@ $.getJSON( absolute_url_of_transactions_request )
       var event = item.input.substring(0,10);
       switch(event) {
         case '0x':  // this transaction is a simple incoming or outgoing transfer of ethers
-          var value = Number.parseFloat(item.value / Math.pow(10,18));
+          var value = 0;
+          try {
+              value = Number.parseFloat(item.value / Math.pow(10,18));
+          } catch (err) {
+              value = parseFloat(item.value / Math.pow(10,18));
+          };
           if (value > 0) {  // incoming ethers = deposit = donation
             collected_sum += value;
             collected_count += 1;
-            var gas_price = Number.parseFloat(item.gasPrice);
-            var gas_used = Number.parseFloat(item.gasUsed);
+            var gas_price = 0;
+            var gas_used = 0;
+            try {
+                gas_price = Number.parseFloat(item.gasPrice);
+                gas_used = Number.parseFloat(item.gasUsed);
+            } cath (err) {
+                gas_price = parseFloat(item.gasPrice);
+                gas_used = parseFloat(item.gasUsed);
+            };                
             var transaction_fees = gas_price * gas_used / Math.pow(10,18);
             collection_fees_sum += transaction_fees;
             // Display human readable explanation of the transaction
