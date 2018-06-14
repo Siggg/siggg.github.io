@@ -48,6 +48,7 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     console.log( "complete" );
   });
 
+/*
 // Display the address of the account
 $('#account_address').html(account_address);
     
@@ -133,3 +134,4 @@ $.getJSON( absolute_url_of_transactions_request )
   .fail( function(error) { console.log( "fail while trying to get contract transactions", error ); } )
   .always( function() { console.log( "always after trying to get contract transactions" ); } );
 
+*/
