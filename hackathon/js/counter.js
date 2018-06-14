@@ -30,7 +30,7 @@ var account_address = "0xD972634E4A036d91d0D4A35EF4927B63ac0Fa7F4";
 
 // Please do login to https://etherscan.io/myapikey and get an API key for your pages
 // so that mine does get blocked because of over-use
-var etherscanAPIKeyToken = "XZYBD5MNJ6TEN28TZGMVTF2SZ9PGNVUV3K";
+var etherscanAPIKeyToken = "";
 
 // Display the address of the account
 $('#account_address').html(account_address);
