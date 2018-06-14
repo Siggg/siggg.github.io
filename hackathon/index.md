@@ -4,12 +4,10 @@ description : projets du hackathon
 ---
 # [Générateur de comptes](comptes.md)
 
-# Compteur de dons
-
-Dons sur le compte :
-<div id="account_address">(chargement en cours)</div>
+# <span class="collected_sum_eur">(chargement en cours)</span> euros collectés sur le compte <span id="account_address">(chargement en cours)</span>
 <div id="account_qr_code">(calcul en cours)</div>
-Collectés : <span id="collected_sum_eur">(chargement en cours)</span>
+
+(Compteur de dons expérimental)
 
 ## Détail du compte
 
