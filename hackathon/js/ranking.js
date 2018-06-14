@@ -54,9 +54,10 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     var addresses = [];
     for (var address in accounts) {
         if (accounts.hasOwnProperty(address)) {
-            addresses += address;
+            addresses.push(address);
         };
     };
+    console.log("known addresses", addresses);
     // Get balances of corresponding accounts, by batch of 20 addresses (API limit)
     while (addresses.length) {
         var batch_of_addresses = addresses.splice(0,2);
