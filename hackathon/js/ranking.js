@@ -50,6 +50,17 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
   })
   .done(function() {
     console.log( "second success", accounts );
+    // List known addresses
+    var addresses = [];
+    for (var address in accounts) {
+    if (accounts.hasOwnProperty(address)) {
+        addresses.append(address);
+    };
+    // Get balances of corresponding accounts, by batch of 20 addresses (API limit)
+    while (addresses.length) {
+        var batch_of_addresses = addresses.splice(0,2);
+        console.log("batch", batch_of_addresses);
+    };
   })
   .fail(function(err) {
     console.log( "error", err );
@@ -59,9 +70,6 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
   });
 
 /*
-// Display the address of the account
-$('#account_address').html(account_address);
-    
 // Get the history of transactions (donations, withdrawals, etc.) for this address (from Etherscan APIs)
 var balance_request = "module=account&action=balance&address="
   + account_address
