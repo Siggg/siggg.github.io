@@ -1,0 +1,5 @@
+{
+  "0x000": { "collected_sum_eth": 0, "account_label": "Compte 0x000" },
+  "0x007": { "collected_sum_eth": 0, "account_label": "Compte 0x007" },
+  "0xded": { "collected_sum_eth": 0, "account_label": "Compte 0xded" }
+}
