@@ -35,7 +35,7 @@ var etherscanAPIKeyToken = "";
 var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     console.log( "success", data );
     $.each(data, function(i, item) {
-      console.log(i, item, data[item]);
+      console.log(item["collected_sum_eth"], item["account_label"]);
     });
   })
   .done(function() {
