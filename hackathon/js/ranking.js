@@ -30,12 +30,13 @@ var accounts_json_filename = "js/comptes.json";
 // Please do login to https://etherscan.io/myapikey and get an API key for your pages
 // so that mine does get blocked because of over-use
 var etherscanAPIKeyToken = "";
+var accounts = {};
 
 // Load the description of the accounts to be ranked
 var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     console.log( "success", data );
     $.each(data, function(i, item) {
-      console.log(item["collected_sum_eth"], item["account_label"]);
+      console.log(i, data[i], item["collected_sum_eth"], item["account_label"]);
     });
   })
   .done(function() {
