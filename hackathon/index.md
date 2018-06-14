@@ -19,7 +19,8 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
     * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
 * Retraits effectués depuis ce compte (en ethers) : <span id="withdrawn_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="withdrawn_sum_eur">(chargement en cours)</span> EUR
-* Détails des transactions : <div id="transactions"> (chargement en cours) </div>
+* Détails des transactions :
+<div id="transactions"> (chargement en cours) </div>
 
 [Audit technique du contrat de don et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
