@@ -47,11 +47,6 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
   .always(function() {
     console.log( "complete" );
   });
- 
-// Set another completion function for the request above
-jqxhr.complete(function() {
-  console.log( "second complete" );
-});
 
 // Display the address of the account
 $('#account_address').html(account_address);
