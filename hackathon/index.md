@@ -12,7 +12,7 @@ description : projets du hackathon
 ## Détail du compte
 
 * Dons collectés, hors frais (en ethers) : <span id="collected_sum">(chargement en cours)</span> ETH
-    * soit, en euros au cours moyen du jour : <span id="collected_sum_eur">(chargement en cours)</span> EUR
+    * soit, en euros au cours moyen du jour : <span class="collected_sum_eur">(chargement en cours)</span> EUR
 * Dons collectés (nombre) : <span id="collected_count">(chargement en cours)</span>
 * Frais de sécurisation pour la collecte des dons (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
@@ -145,7 +145,7 @@ Powered by Etherscan.io APIs
                         var collection_fees_sum_eur = collection_fees_sum * price ;
                         var collected_sum_eur = collected_sum * price ;
                         $('#collection_fees_sum_eur').html(collection_fees_sum_eur.toFixed(2));
-                        $('#collected_sum_eur').html(collected_sum_eur.toFixed(2));
+                        $('.collected_sum_eur').html(collected_sum_eur.toFixed(2));
                     } )
                     .fail( function(error) { console.log( "fail while trying to get ETH price", error ); } )
                     .always( function() { console.log( "always log after trying to get ETH price" ); } );
