@@ -19,8 +19,7 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
     * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
 * Retraits effectués depuis ce compte (en ethers) : <span id="withdrawn_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="withdrawn_sum_eur">(chargement en cours)</span> EUR
-
-<div id="transactions"> Détail des transactions : </div>
+* Détails des transactions : <div id="transactions"> (chargement en cours) </div>
 
 [Audit technique du contrat de don et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
@@ -93,8 +92,6 @@ Powered by Etherscan.io APIs
             $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
             $('#collected_sum').html(collected_sum.toFixed(4));
             $('#collected_count').html(collected_count);
-            $('#registrations_count').html(registrations_count);
-            $('#unregistrations_count').html(unregistrations_count);
             //
             // let's convert ETH sums into EUR
             //
