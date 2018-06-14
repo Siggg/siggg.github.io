@@ -17,4 +17,4 @@ description : Classement, par dons cumulés, des projets du hackathon seniors et
 <div id="ranked_addresses">(en cours de chargement)</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script defer src="js/classement.js"></script>
+<script defer src="js/ranking.js"></script>
