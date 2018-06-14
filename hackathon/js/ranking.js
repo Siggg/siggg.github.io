@@ -72,14 +72,14 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
             + relative_url_of_balance_request
             + "&apikey="
             + etherscanAPIKeyToken;
-        var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function() {
-            console.log( "API success" );
+        var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function(data) {
+            console.log( "API success", data );
         })
         .done(function() {
             console.log( "API second success" );
         })
-        .fail(function() {
-            console.log( "API error" );
+        .fail(function(err) {
+            console.log( "API error", err );
         })
         .always(function() {
             console.log( "API complete", absolute_url_of_balance_request );
