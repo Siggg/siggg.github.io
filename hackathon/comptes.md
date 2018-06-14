@@ -31,4 +31,4 @@ description : projets du hackathon
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.1.5/dist/jszip.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip-utils@0.0.2/dist/jszip-utils.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/file-saver@1.3.8/FileSaver.min.js"></script>
-<script src="js/index.js" defer></script>
+<script src="js/comptes.js" defer></script>
