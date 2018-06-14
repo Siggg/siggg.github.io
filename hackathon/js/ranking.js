@@ -5,32 +5,50 @@ A copy of this license is available at https://www.gnu.org/licenses/agpl-3.0.htm
 Copyright 2018 Conseil Départemental des Hauts-de-Seine & Jean Millerat
 
 In order to use this script, you will have to set the values of the following variables :
-- account_address
+- FIXME: accounts_json_filename
 - etherscanAPIKeyToken
 
 And you will have to create the following HTML elements in the web page calling this script so that it generates them :
--	#collected_sum : sum of donations in ethers
--   .collected_sum_eur : sum of donations in euros (at daily market price)
--   #account_address : address of the Ethereum address to be inspected
--	#account_qr_code : QR Code corresponding to this Ethereum address
--	#collected_count : number of donations to this address
--	#collection_fees_sum : sum of transaction/mining fees for donations, in ethers
--	#collection_fees_sum_eur : sum of transaction/mining fees for donations, equivalent value in euros at daily market price
--	#transactions : human readable list of donations for this address
+FIXME: #collected_sum : sum of donations in ethers
+FIXME: .collected_sum_eur : sum of donations in euros (at daily market price)
+FIXME: #account_address : address of the Ethereum address to be inspected
+FIXME: #account_qr_code : QR Code corresponding to this Ethereum address
+FIXME: #collected_count : number of donations to this address
+FIXME: #collection_fees_sum : sum of transaction/mining fees for donations, in ethers
+FIXME: #collection_fees_sum_eur : sum of transaction/mining fees for donations, equivalent value in euros at daily market price
+FIXME: #transactions : human readable list of donations for this address
 
 This scripts requires the following scripts to be loaded before :
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-qrcode2@1.0.0/dist/jquery-qrcode.min.js"></script>
 
 Here you go. */
 
-// address of the Ethereum account to inspect
-var account_address = "0xD972634E4A036d91d0D4A35EF4927B63ac0Fa7F4";
+// Name of the JSON file describing the accounts to be ranked
+var accounts_json_filename = "comptes.json";
 
 // Please do login to https://etherscan.io/myapikey and get an API key for your pages
 // so that mine does get blocked because of over-use
 var etherscanAPIKeyToken = "";
+
+// Load the description of the accounts to be ranked
+var jqxhr = $.getJSON( accounts_json_filename, function() {
+  console.log( "success" );
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+ 
+// Set another completion function for the request above
+jqxhr.complete(function() {
+  console.log( "second complete" );
+});
 
 // Display the address of the account
 $('#account_address').html(account_address);
