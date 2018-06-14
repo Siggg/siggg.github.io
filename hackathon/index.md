@@ -17,32 +17,24 @@ Adresse du compte : 0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4
 * Dons collectés (nombre) : <span id="collected_count">(chargement en cours)</span>
 * Frais de sécurisation pour la collecte des dons (en ethers) : <span id="collection_fees_sum">(chargement en cours)</span> ETH
     * soit, en euros au cours moyen du jour : <span id="collection_fees_sum_eur">(chargement en cours)</span> EUR
-* Retraits effectués depuis ce compte (en ethers) : <span id="given_sum">(chargement en cours)</span> ETH
-    * soit, en euros au cours moyen du jour : <span id="given_sum_eur">(chargement en cours)</span> EUR
+* Retraits effectués depuis ce compte (en ethers) : <span id="withdrawn_sum">(chargement en cours)</span> ETH
+    * soit, en euros au cours moyen du jour : <span id="withdrawn_sum_eur">(chargement en cours)</span> EUR
 
-## Les dernières transactions
-
-<div id="transactions">
-
-(chargement en cours, veuillez patienter...)
-
-En cas de dysfonctionnement, tentez de recharger la page ou contactez par email **sig arobase akasig point org**.
-
-</div>
+<div id="transactions"> Détail des transactions : </div>
 
 [Audit technique du contrat de don et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
-
+- Powered by Etherscan.io APIs -
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-    var etherscanAPIKeyToken = "MonTokenDAPIPourMonCompteur001";
-    var contract_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
+    var etherscanAPIKeyToken = "XZYBD5MNJ6TEN28TZGMVTF2SZ9PGNVUV3K";
+    var account_address = "0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4";
     var balance_request = "module=account&action=balance&address="
-        + contract_address
+        + account_address
         + "&tag=latest";
     var relative_url_of_transactions_request = "module=account&action=txlist&address="
-        + contract_address
+        + account_address
         + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
     var absolute_url_of_transactions_request = "https://api.etherscan.io/api?"
         + relative_url_of_transactions_request
@@ -58,10 +50,7 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
             var collected_sum = 0; // cumulated sum of donations collected
             var collected_count = 0; // number of donations collected
             var collection_fees_sum = 0; // cumulated transaction fees paid by donors
-            var given_sum = 0; // cumulated donations given
-            var collection_fees_percent = 0; // percent of collected amount that goes into collection fees
-            var registrations_count = 0; // number of beneficiary registrations
-            var unregistrations_count = 0; // number of beneficiary unregistrations
+            var withdrawn_sum = 0; // cumulated donations withdrawn
             transactions.forEach(function(item, index, array) {
                 console.log(item, index);
                 var newDate = new Date();
@@ -71,31 +60,20 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
                 switch(event) {
                     case '0x':
                         var value = Number.parseFloat(item.value / Math.pow(10,18));
-                        collected_sum += value;
-                        collected_count += 1;
-                        var gas_price = Number.parseFloat(item.gasPrice);
-                        var gas_used = Number.parseFloat(item.gasUsed);
-                        var transaction_fees = gas_price * gas_used / Math.pow(10,18);
-                        collection_fees_sum += transaction_fees;
-                        event = "Réception d'un don de " + value.toFixed(4) + " ETH";
-                        event += " et paiement de " + collection_fees_sum.toFixed(4) + " ETH";
-                        event += " par le donateur pour les frais de sécurisation de la collecte";
-                        break;
-                    case '0x6b9f96ea':
-                        event = "Distribution des dons";
-                        break;
-                    case '0xcdd8b2b2':
-                        var beneficiary = item.input.substring(34,38) + '...';
-                        registrations_count += 1;
-                        event = "Inscription du bénéficiaire #" + beneficiary;
-                        break;
-                    case '0x71d0028d':
-                        var beneficiary = item.input.substring(34,38) + '...';
-                        unregistrations_count += 1;
-                        event = "Désinscription du bénéficiaire #" + beneficiary;
-                        break;
-                    case '0x60606040':
-                        event = "Initialisation du contrat";
+                        if (value > 0) {           // deposit = donation
+                           collected_sum += value;
+                           collected_count += 1;
+                           var gas_price = Number.parseFloat(item.gasPrice);
+                           var gas_used = Number.parseFloat(item.gasUsed);
+                           var transaction_fees = gas_price * gas_used / Math.pow(10,18);
+                           collection_fees_sum += transaction_fees;
+                           event = "Réception d'un don de " + value.toFixed(4) + " ETH";
+                           event += " et paiement de " + collection_fees_sum.toFixed(4) + " ETH";
+                           event += " par le donateur pour les frais de sécurisation de la collecte";
+                        } else {                    // withdrawal
+                           withdrawn_sum += value;
+                           event = "Retrait de " + value.toFixed(4) + " ETH";
+                        };
                         break;
                     default:
                         event = item.input;
@@ -109,8 +87,7 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
                 html += '</ul>';
                 $('#transactions').html(html);
                 // Fill the dashboard with figures
-                given_sum = collected_sum - collection_fees_sum;
-                $('#given_sum').html(given_sum.toFixed(4));
+                $('#withdrawn_sum').html(withdrawn_sum.toFixed(4));
                 $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
                 collection_fees_percent = collection_fees_sum / collected_sum * 100;
                 $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
@@ -125,10 +102,10 @@ En cas de dysfonctionnement, tentez de recharger la page ou contactez par email 
                 $.getJSON( absolute_url_of_price_request )
                     .done( function(data) {
                         var price = data.RAW.PRICE;
-                        var given_sum_eur = given_sum * price ;
+                        var withdrawn_sum_eur = withdrawn_sum * price ;
                         var collection_fees_sum_eur = collection_fees_sum * price ;
                         var collected_sum_eur = collected_sum * price ;
-                        $('#given_sum_eur').html(given_sum_eur.toFixed(2));
+                        $('#withdrawn_sum_eur').html(withdrawn_sum_eur.toFixed(2));
                         $('#collection_fees_sum_eur').html(collection_fees_sum_eur.toFixed(2));
                         $('#collected_sum_eur').html(collected_sum_eur.toFixed(2));
                     } )
