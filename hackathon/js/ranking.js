@@ -33,9 +33,9 @@ var etherscanAPIKeyToken = "";
 
 // Load the description of the accounts to be ranked
 var jqxhr = $.getJSON( accounts_json_filename, function(data) {
-    console.log( "success" );
+    console.log( "success", data );
     $.each(data, function(i, item) {
-      alert(i, item, data[item]);
+      console.log(i, item, data[item]);
     });
   })
   .done(function() {
