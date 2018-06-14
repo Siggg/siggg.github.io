@@ -1,5 +1,7 @@
 {
-  "0x000": { "collected_sum_eth": 0, "account_label": "Compte 0x000" },
-  "0x007": { "collected_sum_eth": 0, "account_label": "Compte 0x007" },
-  "0xded": { "collected_sum_eth": 0, "account_label": "Compte 0xded" }
+  "0xD972634E4A036d91d0D4A35EF4927B63ac0Fa7F4": { "collected_sum_eth": 0, "account_label": "Contrat de test" },
+  "0x007": { "collected_sum_eth": 0, "account_label": "Compte bidon 0x007" },
+  "0x7Bad45015C45388602E4271b7D89d07B5D4Dc2E4": { "collected_sum_eth": 0, "account_label": "Random account with some ETH" },
+  "0x0090E7eE0C6213E11457d11dc5c73689654Ef65E": { "account_label": "Another non-empty random account" },
+  "0x274F3c32C90517975e29Dfc209a23f315c1e5Fc7": { "account_label": "Yet another non-empty random account" }
 }
