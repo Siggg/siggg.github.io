@@ -103,7 +103,7 @@ $.getJSON( absolute_url_of_transactions_request )
             try {
                 gas_price = Number.parseFloat(item.gasPrice);
                 gas_used = Number.parseFloat(item.gasUsed);
-            } cath (err) {
+            } catch (err) {
                 gas_price = parseFloat(item.gasPrice);
                 gas_used = parseFloat(item.gasUsed);
             };                
