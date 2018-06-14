@@ -32,9 +32,12 @@ var accounts_json_filename = "comptes.json";
 var etherscanAPIKeyToken = "";
 
 // Load the description of the accounts to be ranked
-var jqxhr = $.getJSON( accounts_json_filename, function() {
-  console.log( "success" );
-})
+var jqxhr = $.getJSON( accounts_json_filename, function(data) {
+    console.log( "success" );
+    $.each(data, function(i, item) {
+      alert(i, item);
+    });
+  })
   .done(function() {
     console.log( "second success" );
   })
@@ -53,59 +56,11 @@ jqxhr.complete(function() {
 // Display the address of the account
 $('#account_address').html(account_address);
     
-// Set the graphics options for the QR Code
-var qr_code_size = 300;
-var qr_code_options = { 
-  // render method: 'canvas', 'image' or 'div'
-  render: 'canvas',
-  // version range somewhere in 1 .. 40
-  minVersion: 1,
-  maxVersion: 40,
-  // error correction level: 'L', 'M', 'Q' or 'H'
-  ecLevel: 'H',
-  // offset in pixel if drawn onto existing canvas
-  left: 0,
-  top: 0,
-  // size in pixel
-  size: qr_code_size,
-  // code color or image element
-  fill: '#000',
-  // background color or image element, null for transparent background
-  background: '#fff',
-  // content
-  text: account_address,
-  // corner radius relative to module width: 0.0 .. 0.5
-  radius: 0.5,
-  // quiet zone in modules
-  quiet: 1,
-  // modes
-  // 0: normal
-  // 1: label strip
-  // 2: label box
-  // 3: image strip
-  // 4: image box
-  mode: 2,
-  // size of text
-  mSize: 0.08,
-  mPosX: 0.5,
-  mPosY: 0.5,
-  label: "Adresse " + account_address.substring(0,6) + "...",
-  fontname: 'sans',
-  fontcolor: '#000',
-  image: null
-};
-
-// Display the QR Code
-$("#account_qr_code").html('<canvas width="' + qr_code_size
-  + '" height="' + qr_code_size
-  + '" id="public_address_qr_code'
-  + '"></canvas>');
-$("#public_address_qr_code").qrcode(qr_code_options);
-    
 // Get the history of transactions (donations, withdrawals, etc.) for this address (from Etherscan APIs)
 var balance_request = "module=account&action=balance&address="
   + account_address
-  + "&tag=latest";
+  + "&apikey="
+  + etherscanAPIKeyToken;
 var relative_url_of_transactions_request = "module=account&action=txlist&address="
   + account_address
   + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
@@ -119,7 +74,6 @@ $.getJSON( absolute_url_of_transactions_request )
     // sort transactions by timestamp
     var transactions = data.result.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
     // now process them one by one in order to count ether transfers
-    var html = '<ul>';
     var collected_sum = 0; // cumulated sum of donations collected
     var collected_count = 0; // number of donations collected
     var collection_fees_sum = 0; // cumulated transaction fees paid by donors
@@ -154,27 +108,15 @@ $.getJSON( absolute_url_of_transactions_request )
             };                
             var transaction_fees = gas_price * gas_used / Math.pow(10,18);
             collection_fees_sum += transaction_fees;
-            // Display human readable explanation of the transaction
-            event = "Réception d'un don de " + value.toFixed(4) + " ETH";
-            event += " et paiement de " + collection_fees_sum.toFixed(4) + " ETH";
-            event += " par le donateur pour les frais de sécurisation de la collecte";
-            html += '<li><a href="https://etherscan.io/tx/' + item.hash + '">' +
-              event +
-              ' (' + dateString.substring(0,10) +
-              ' à ' + dateString.substring(11,19) +
-              ')</a></li>';
           };
           break;
         default:
           event = item.input;
       };
     });
-    html += '</ul>';
-    // Display the history of transactions
-    $('#transactions').html(html);
     // Fill the dashboard/counter with some figures
     $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
-    collection_fees_percent = collection_fees_sum / collected_sum * 100;
+    var collection_fees_percent = collection_fees_sum / collected_sum * 100;
     $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
     $('#collected_sum').html(collected_sum.toFixed(4));
     $('#collected_count').html(collected_count);
