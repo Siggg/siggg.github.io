@@ -59,9 +59,31 @@ var jqxhr = $.getJSON( accounts_json_filename, function(data) {
     };
     console.log("known addresses", addresses);
     // Get balances of corresponding accounts, by batch of 20 addresses (API limit)
+    var BATCH_LIMIT = 20;
     while (addresses.length) {
-        var batch_of_addresses = addresses.splice(0,2);
+        var batch_of_addresses = addresses.splice(0, BATCH_LIMIT);
+        // Get balance of these addresses
         console.log("batch", batch_of_addresses);
+        var relative_url_of_balance_request = "module=account&action=balance&address="
+            + batch_of_addresses.join(",")
+            + "&apikey="
+            + etherscanAPIKeyToken;
+        var absolute_url_of_balance_request = "https://api.etherscan.io/api?"
+            + relative_url_of_balance_request
+            + "&apikey="
+            + etherscanAPIKeyToken;
+        var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function() {
+            console.log( "API success" );
+        })
+        .done(function() {
+            console.log( "API second success" );
+        })
+        .fail(function() {
+            console.log( "API error" );
+        })
+        .always(function() {
+            console.log( "API complete", absolute_url_of_balance_request );
+        });
     };
   })
   .fail(function(err) {
