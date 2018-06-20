@@ -21,6 +21,8 @@ description : Pour les projets du hackathon seniors et autonomie du CD92
 
 [Audit technique du contrat de don et des transactions](https://etherscan.io/address/0xd972634e4a036d91d0d4a35ef4927b63ac0fa7f4)
 
+## [Comment acheter, donner et dépenser des ethers](2018-06-21_ethers_comment_acheter_donner_et_depenser.pdf)
+
 Powered by Etherscan.io APIs
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
