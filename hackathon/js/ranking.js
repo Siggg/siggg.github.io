@@ -82,8 +82,7 @@ $.ajax({
 						console.log("load success with padded_index, transactions : ", padded_index, transactions);
 						var donations_nb = 0;
 						var donations_sum_eth = 0;
-						if (not Array.isArray(transactions)) { return; }
-						if (transactions.length > 0) {
+						if (Array.isArray(transactions) && transactions.length > 0) {
 							const counter = function(number, transaction, index, array) {
 								var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
 								/* console.log(is_a_donation,
