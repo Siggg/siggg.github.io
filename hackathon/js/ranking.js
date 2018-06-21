@@ -24,157 +24,148 @@ This scripts requires the following scripts to be loaded before :
 
 Here you go. */
 
-// Name of the JSON file describing the accounts to be ranked
-var accounts_json_filename = "js/comptes.json";
+// utility function
+function assert(condition, message) {
+    if (!condition) {
+        message = message || "Assertion failed";
+        if (typeof Error !== "undefined") {
+            throw new Error(message);
+        }
+        throw message; // Fallback
+    }
+}
 
-// Please do login to https://etherscan.io/myapikey and get an API key for your pages
-// so that mine does get blocked because of over-use
-var etherscanAPIKeyToken = "someRandomAPIKeyToken";
-var accounts = {};
 
-// Load the description of the accounts to be ranked
-var jqxhr = $.getJSON( accounts_json_filename, function(data) {
-    console.log( "success", data );
-    $.each(data, function(account_address, item) {
-        // update accounts from this JSON file
-        if (accounts[account_address] == undefined) {
-            accounts[account_address] = item;
-        } else {
-            accounts[account_address].account_label = item.account_label;
-            if (accounts[account_address] <=0) {
-                accounts[account_address].collected_sum_eth = item.collected_sum_eth;
-            };
-        };
-        console.log(account_address, item.collected_sum_eth, item.account_label);
-    });
-  })
-  .done(function() {
-    console.log( "second success", accounts );
-    // List known addresses
-    var addresses = [];
-    for (var address in accounts) {
-        if (accounts.hasOwnProperty(address)) {
-            addresses.push(address);
-        };
-    };
-    console.log("known addresses", addresses);
-    // Get balances of corresponding accounts, by batch of 20 addresses (API limit)
-    var BATCH_LIMIT = 20;
-    while (addresses.length) {
-        var batch_of_addresses = addresses.splice(0, BATCH_LIMIT);
-        // Get balance of these addresses
-        console.log("batch", batch_of_addresses);
-        var relative_url_of_balance_request = "module=account&action=balancemulti&address="
-            + batch_of_addresses.join(",")
-            + "&apikey="
-            + etherscanAPIKeyToken;
-        var absolute_url_of_balance_request = "https://api.etherscan.io/api?"
-            + relative_url_of_balance_request ;
-        var jqxhr2 = $.getJSON( absolute_url_of_balance_request, function(data) {
-            console.log( "API success", data.result );
-            // Update accounts
-            // Update some of balances
-            // Display stuff
-        })
-        .done(function() {
-            console.log( "API second success" );
-        })
-        .fail(function(err) {
-            console.log( "API error", err );
-        })
-        .always(function() {
-            console.log( "API complete", absolute_url_of_balance_request );
-        });
-    };
-  })
-  .fail(function(err) {
-    console.log( "error", err );
-  })
-  .always(function() {
-    console.log( "complete" );
-  });
+// Parse local CSV file
+var csv_filename = "2018-06-19_hackathon_entrees-attribuees.csv";
+var etherscan_api_url = "http://api.etherscan.io/api?module=account&action=txlistinternal&startblock=0&endblock=99999999&sort=asc";
+etherscan_api_url += "&apikey=PB8BWBNFYSC7KRCZC8ESWHMS79AD996W9Q"
 
-/*
-// Get the history of transactions (donations, withdrawals, etc.) for this address (from Etherscan APIs)
-var balance_request = "module=account&action=balance&address="
-  + account_address
-  + "&apikey="
-  + etherscanAPIKeyToken;
-var relative_url_of_transactions_request = "module=account&action=txlist&address="
-  + account_address
-  + "&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
-var absolute_url_of_transactions_request = "https://api.etherscan.io/api?"
-  + relative_url_of_transactions_request
-  + "&apikey="
-  + etherscanAPIKeyToken;
-$.getJSON( absolute_url_of_transactions_request )
-  .done( function(data) {
-    console.log( "done", data );
-    // sort transactions by timestamp
-    var transactions = data.result.sort( function(t1, t2) { return t2.timeStamp - t1.timeStamp; } );
-    // now process them one by one in order to count ether transfers
-    var collected_sum = 0; // cumulated sum of donations collected
-    var collected_count = 0; // number of donations collected
-    var collection_fees_sum = 0; // cumulated transaction fees paid by donors
-    var withdrawn_sum = 0; // cumulated donations withdrawn
-    transactions.forEach(function(item, index, array) {
-      console.log(item, index);
-      // We'll want to display the date and time of the transaction
-      var newDate = new Date();
-      newDate.setTime(item.timeStamp*1000);
-      var dateString = newDate.toISOString();
-      // Is this a simple ether transfer or a special transaction (use of a smart contract) ?
-      var event = item.input.substring(0,10);
-      switch(event) {
-        case '0x':  // this transaction is a simple incoming or outgoing transfer of ethers
-          var value = 0;
-          try {
-              value = Number.parseFloat(item.value / Math.pow(10,18));
-          } catch (err) {
-              value = parseFloat(item.value / Math.pow(10,18));
-          };
-          if (value > 0) {  // incoming ethers = deposit = donation
-            collected_sum += value;
-            collected_count += 1;
-            var gas_price = 0;
-            var gas_used = 0;
-            try {
-                gas_price = Number.parseFloat(item.gasPrice);
-                gas_used = Number.parseFloat(item.gasUsed);
-            } catch (err) {
-                gas_price = parseFloat(item.gasPrice);
-                gas_used = parseFloat(item.gasUsed);
-            };                
-            var transaction_fees = gas_price * gas_used / Math.pow(10,18);
-            collection_fees_sum += transaction_fees;
-          };
-          break;
-        default:
-          event = item.input;
-      };
-    });
-    // Fill the dashboard/counter with some figures
-    $('#collection_fees_sum').html(collection_fees_sum.toFixed(4));
-    var collection_fees_percent = collection_fees_sum / collected_sum * 100;
-    $('#collection_fees_percent').html(collection_fees_percent.toPrecision(2));
-    $('#collected_sum').html(collected_sum.toFixed(4));
-    $('#collected_count').html(collected_count);
-    //
-    // Let's convert ETH sums into EUR
-    // using cryptocompare API to get market price
-    var absolute_url_of_price_request = "https://min-api.cryptocompare.com/data/generateAvg?fsym=ETH&tsym=EUR&e=Kraken";
-    $.getJSON( absolute_url_of_price_request )
-      .done( function(data) {
-        var price = data.RAW.PRICE;
-        var collection_fees_sum_eur = collection_fees_sum * price ;
-        var collected_sum_eur = collected_sum * price ;
-        $('#collection_fees_sum_eur').html(collection_fees_sum_eur.toFixed(2));
-        $('.collected_sum_eur').html(collected_sum_eur.toFixed(2));
-      } )
-      .fail( function(error) { console.log( "fail while trying to get ETH price", error ); } )
-      .always( function() { console.log( "always log after trying to get ETH price" ); } );
-  } )
-  .fail( function(error) { console.log( "fail while trying to get contract transactions", error ); } )
-  .always( function() { console.log( "always after trying to get contract transactions" ); } );
+$.ajax({
+        url : csv_filename,
+		dataType: "text",
+	}).fail( function(err) {
+        console.log("error with csv_filename, err : ", csv_filename, err); 
+	}).always( function(data) {
+        // console.log("always with csv_filename : ", csv_filename); 
+	}).done( function (data) {
+		console.log("success parsing csv_filename : ", csv_filename);
+		Papa.parse(data, {
+			header: true,
+			// delimiter: ";",
+			// newline: '\n',
+			encoding: "UTF-8",
+			error: function(err, file, inputElem, reason) {
+				// executed if an error occurs while loading the file,
+				// or if before callback aborted for some reason
+				console.log("Error:", err, file, inputElem, reason);
+			},
+			complete: function(results) {
+				console.log("parsing complete with results :", results);
+				var projects = results.data;
+				var donations_total_eth = 0;
+				var donations_total_eur = 0;
+				var price = 0;
+				var i;
+				for (i = 0; i < projects.length; i++) {
+					$('#the_div').html('<h1>(Examen du projet n°' + i + ' sur ' + projects.length + ' en cours, veuillez patienter SVP)</h1>');
+					var project = projects[i];
+					var padded_index = ("000" + i).slice(-3);
+					// load the public address into the document
+					var api_url = etherscan_api_url + "&address=" + project.Cle
+					$.ajax({
+						url : api_url,
+						async: false,
+						// dataType: "text",
+					}).done( function (data) {
+						var transactions = data.result;
+						console.log("load success with padded_index, transactions : ", padded_index, transactions);
+						var donations_nb = 0;
+						var donations_sum_eth = 0;
+						if (transactions.length > 0) {
+							const counter = function(number, transaction, index, array) {
+								var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
+								/* console.log(is_a_donation,
+									transaction.from,
+									transaction.to,
+									transaction.value); */
+								var nb = number;
+								if (is_a_donation) { // donation
+									nb += 1;
+								};
+								return nb;
+							};
+							donations_nb = transactions.reduce(counter, 0);
+							const sumer = function(sum, transaction, index, array) {
+								var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
+								if (is_a_donation) { // donation
+									var value = 0;
+									try {
+										value = Number.parseInt(transaction.value);
+									} catch (err) {
+										value = parseInt(transaction.value);
+									};
+									return sum + parseInt(value);
+								} else {
+									return sum;
+								};
+							};
+							donations_sum_eth = transactions.reduce(sumer, 0);
+						};
+						console.log(donations_nb, " donations with a total of ", donations_sum_eth, " Wei");
+						try {
+							donations_sum_eth = Number.parseFloat(donations_sum_eth / Math.pow(10,18));
+						} catch (err) {
+							donations_sum_eth = parseFloat(donations_sum_eth / Math.pow(10,18));
+						};
+						project.donations_nb = donations_nb;
+						project.donations_sum_eth = donations_sum_eth;
+						donations_total_eth += donations_sum_eth;
+					}).fail( function(err) {
+						console.log("error with padded_index, err : ", padded_index, err); 
+					}).always( function(data) {
+						// console.log("always with padded_index, data : ", padded_index, data); 
+					});
+				};
+				projects = projects.sort(function(a, b){
+					return a.donations_sum_eth < b.donations_sum_eth;
+				});
+				var absolute_url_of_price_request = "https://min-api.cryptocompare.com/data/generateAvg?fsym=ETH&tsym=EUR&e=Kraken";
+				$.ajax({
+					url : absolute_url_of_price_request,
+					async: false,
+				}).done( function(data) {
+					price = data.RAW.PRICE;
+					donations_total_eur = donations_total_eth * price ;
+				}).fail( function(error) {
+					console.log( "fail while trying to get ETH price", error );
+				}).always( function() {
+					console.log( "always log after trying to get ETH price" );
+				});
+				var html = '<h1 id="donations_total_eur">TOTAL DES DONS : ' + donations_total_eur.toFixed(2) + ' euros';
+				html += ' (' + donations_total_eth.toFixed(2) + ' ethers)</h1>';
+				$('#the_div').html(html);
+				var table = '<table><thead><tr>';
+				table += '<td>Projet (et porteur), adresse publique</td>';
+				table += '<td>Nombre de dons reçus</td>';
+				table += '<td>Somme donnée (en ethers)</td>';
+				table += '<td>Somme donnée (en euros)</td></tr></thead><tbody>';
+				for (i = 0; i < projects.length; i++) {
+					var project = projects[i];
+					var project_url = "https://siggg.github.io/hackathon/compteur.html?account_address=";
+					project_url += project.Cle
+					table += '<tr><td><a href="' + project_url + '">';
+					table += project["Denomination de l'action"] + '</a>';
+					table += ' (par ' + project.Operateur + '), ';
+					table += project.Cle.slice(0,6) + '...</td>';
+					table += '<td>' + project.donations_nb + ' dons</td>';
+					table += '<td>' + project.donations_sum_eth.toFixed(2) + ' ETH</td>';
+					table += '<td>' + (project.donations_sum_eth * price).toFixed(2) + ' EUR</td></tr>';
+				};
+				table += '</tbody></table>';
+				$('#the_div').append(table);
+			}
+		});
+	});
 
-*/
+
