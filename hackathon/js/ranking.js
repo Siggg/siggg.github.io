@@ -38,7 +38,7 @@ function assert(condition, message) {
 
 // Parse local CSV file
 var csv_filename = "2018-06-19_hackathon_entrees-attribuees.csv";
-var etherscan_api_url = "https://api.etherscan.io/api?module=account&action=txlistinternal&startblock=0&endblock=99999999&sort=asc";
+var etherscan_api_url = "https://api.etherscan.io/api?module=account&action=txlist&startblock=0&endblock=99999999&sort=asc";
 etherscan_api_url += "&apikey=PB8BWBNFYSC7KRCZC8ESWHMS79AD996W9Q"
 
 $.ajax({
