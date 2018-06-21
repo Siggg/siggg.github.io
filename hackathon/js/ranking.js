@@ -79,6 +79,9 @@ $.ajax({
 						async: false,
 						// dataType: "text",
 					}).done( function (data) {
+						if (project.Cle.startsWith("0xb64D")) {
+							console.log("SIEL Bleu ?", project.Operateur);
+						};
 						var transactions = data.result;
 						console.log("load success with padded_index, transactions : ", padded_index, transactions);
 						var donations_nb = 0;
