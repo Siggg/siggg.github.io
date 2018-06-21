@@ -67,6 +67,7 @@ $.ajax({
 				var donations_total_eur = 0;
 				var price = 0;
 				var i;
+				if (projects[projects.length-1].Numero == "") { projects.pop(); }
 				for (i = 0; i < projects.length; i++) {
 					$('#the_div').html('<h1>(Examen du projet n°' + i + ' sur ' + projects.length + ' en cours, veuillez patienter SVP)</h1>');
 					var project = projects[i];
