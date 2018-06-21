@@ -28,7 +28,7 @@ Here you go. */
 // address of the Ethereum account to inspect
 var account_address = window.document.URL.searchParams.get("account_address");
 if (account_address == undefined) {
-    var account_address = "0xD972634E4A036d91d0D4A35EF4927B63ac0Fa7F4";
+    account_address = "0xD972634E4A036d91d0D4A35EF4927B63ac0Fa7F4";
 };
 console.log("account_address :", account_address);
 
