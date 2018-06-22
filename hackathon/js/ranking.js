@@ -154,7 +154,7 @@ $.ajax({
 				table += '<td>Projet (et porteur), adresse publique</td>';
 				table += '<td>Nombre de dons reçus</td>';
 				table += '<td>Somme donnée (en ethers)</td>';
-				table += '<td>Somme donnée (en euros)</td></tr></thead><tbody>';
+				table += '<td>Valeur au cours du jour (en euros)</td></tr></thead><tbody>';
 				for (i = 0; i < projects.length; i++) {
 					var project = projects[i];
 					var project_url = "https://siggg.github.io/hackathon/compteur.html?account_address=";
