@@ -147,14 +147,14 @@ $.ajax({
 				}).always( function() {
 					console.log( "always log after trying to get ETH price" );
 				});
-				var html = '<h1 id="donations_total_eur">TOTAL DES DONS : ' + donations_total_eur.toFixed(2) + ' euros';
-				html += ' (' + donations_total_eth.toFixed(2) + ' ethers)</h1>';
+				var html = '<h1 id="donations_total_eur">TOTAL DES DONS : ' + donations_total_eth.toPrecision(2) + ' ethers';
+				html += ' (' + donations_total_eur.toFixed(2) + ' euros)</h1>';
 				$('#the_div').html(html);
 				var table = '<table><thead><tr>';
 				table += '<td>Projet (et porteur), adresse publique</td>';
 				table += '<td>Nombre de dons reçus</td>';
 				table += '<td>Somme donnée (en ethers)</td>';
-				table += '<td>Valeur au cours du jour (en euros)</td></tr></thead><tbody>';
+				table += '<td>Valeur équivalente en euros, au cours du jour</td></tr></thead><tbody>';
 				for (i = 0; i < projects.length; i++) {
 					var project = projects[i];
 					var project_url = "https://siggg.github.io/hackathon/compteur.html?account_address=";
