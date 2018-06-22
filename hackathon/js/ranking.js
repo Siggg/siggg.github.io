@@ -24,7 +24,7 @@ This scripts requires the following scripts to be loaded before :
 
 Here you go. */
 
-// utility function
+// utility functions
 function assert(condition, message) {
     if (!condition) {
         message = message || "Assertion failed";
@@ -35,6 +35,9 @@ function assert(condition, message) {
     }
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // Parse local CSV file
 var csv_filename = "2018-06-19_hackathon_entrees-attribuees.csv";
@@ -79,55 +82,52 @@ $.ajax({
 						async: false,
 						// dataType: "text",
 					}).done( function (data) {
-						if (project.Cle.startsWith("0xb64D")) {
-							console.log("SIEL Bleu ?", project.Operateur);
-						};
-						var transactions = data.result;
-						console.log("load success with padded_index, transactions : ", padded_index, transactions);
-						var donations_nb = 0;
-						var donations_sum_eth = 0;
-						if (! Array.isArray(transactions)) { console.log(data); }; 
-						if (Array.isArray(transactions) && transactions.length > 0) {
-							const counter = function(number, transaction, index, array) {
-								var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
-								/* console.log(is_a_donation,
-									transaction.from,
-									transaction.to,
-									transaction.value); */
-								var nb = number;
-								if (is_a_donation) { // donation
-									nb += 1;
-								};
-								return nb;
-							};
-							donations_nb = transactions.reduce(counter, 0);
-							const sumer = function(sum, transaction, index, array) {
-								var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
-								if (is_a_donation) { // donation
-									var value = 0;
-									try {
-										value = Number.parseInt(transaction.value);
-									} catch (err) {
-										value = parseInt(transaction.value);
-									};
-									return sum + parseInt(value);
-								} else {
-									return sum;
-								};
-							};
-							donations_sum_eth = transactions.reduce(sumer, 0);
-						};
-						console.log(donations_nb, " donations with a total of ", donations_sum_eth, " Wei");
-						try {
-							donations_sum_eth = Number.parseFloat(donations_sum_eth / Math.pow(10,18));
-						} catch (err) {
-							donations_sum_eth = parseFloat(donations_sum_eth / Math.pow(10,18));
-						};
-						project.donations_nb = donations_nb;
-						project.donations_sum_eth = donations_sum_eth;
-						donations_total_eth += donations_sum_eth;
+                        var transactions = data.result;
+                        console.log("load success with padded_index, transactions : ", padded_index, transactions);
+                        var donations_nb = 0;
+                        var donations_sum_eth = 0;
+                        if (! Array.isArray(transactions)) { console.log(data); }; 
+                        if (Array.isArray(transactions) && transactions.length > 0) {
+                            const counter = function(number, transaction, index, array) {
+                                var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
+                                /* console.log(is_a_donation,
+                                    transaction.from,
+                                    transaction.to,
+                                    transaction.value); */
+                                var nb = number;
+                                if (is_a_donation) { // donation
+                                    nb += 1;
+                                };
+                                return nb;
+                            };
+                            donations_nb = transactions.reduce(counter, 0);
+                            const sumer = function(sum, transaction, index, array) {
+                                var is_a_donation = transaction.to.toLowerCase() == project.Cle.toLowerCase();
+                                if (is_a_donation) { // donation
+                                    var value = 0;
+                                    try {
+                                        value = Number.parseInt(transaction.value);
+                                    } catch (err) {
+                                        value = parseInt(transaction.value);
+                                    };
+                                    return sum + parseInt(value);
+                                } else {
+                                    return sum;
+                                };
+                            };
+                            donations_sum_eth = transactions.reduce(sumer, 0);
+                        };
+                        console.log(donations_nb, " donations with a total of ", donations_sum_eth, " Wei");
+                        try {
+                            donations_sum_eth = Number.parseFloat(donations_sum_eth / Math.pow(10,18));
+                        } catch (err) {
+                            donations_sum_eth = parseFloat(donations_sum_eth / Math.pow(10,18));
+                        };
+                        project.donations_nb = donations_nb;
+                        project.donations_sum_eth = donations_sum_eth;
+                        donations_total_eth += donations_sum_eth;
 					}).fail( function(err) {
-						console.log("error with padded_index, err : ", padded_index, err); 
+						console.log("error with padded_index, err : ", padded_index, err);
 					}).always( function(data) {
 						// console.log("always with padded_index, data : ", padded_index, data); 
 					});
